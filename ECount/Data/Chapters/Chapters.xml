@@ -1,0 +1,24 @@
+
+<Chapters>
+	<Chapter>
+		<Name>Prehistoric</Name>
+		<Number>1</Number>
+	</Chapter>
+	<Chapter>
+		<Name>Ancient</Name>
+		<Number>2</Number>		
+	</Chapter>
+	<Chapter>
+		<Name>Medieval</Name>
+		<Number>3</Number>
+	</Chapter>
+	<Chapter>
+		<Name>Renaissance</Name>
+		<Number>4</Number>
+	</Chapter>
+	<Chapter>
+		<Name>Modern</Name>
+		<Number>5</Number>
+	</Chapter>
+</Chapters>
+

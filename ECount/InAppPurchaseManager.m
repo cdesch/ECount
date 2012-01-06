@@ -202,9 +202,7 @@ static InAppPurchaseManager *_sharedInAppManager = nil;
 	[[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
 }
 
-
-#pragma -
-#pragma Purchase helpers
+#pragma mark - Purchase helpers
 
 //
 // saves a record of the transaction by storing the receipt to disk

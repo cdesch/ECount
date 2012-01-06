@@ -10,8 +10,9 @@
 
 #import "AppDelegate.h"
 #import "GameConfig.h"
-#import "HelloWorldLayer.h"
 #import "RootViewController.h"
+#import "HelloWorldLayer.h"
+//#import "TestLayer.h"
 #import "SceneManager.h"
 
 @implementation AppDelegate
@@ -112,8 +113,22 @@
 	[self removeStartupFlicker];
 	
 	// Run the intro Scene
-	//[[CCDirector sharedDirector] runWithScene: [HelloWorldLayer scene]];
-    [SceneManager goMainMenu];
+	[[CCDirector sharedDirector] runWithScene: [HelloWorldLayer scene]];
+    //[[CCDirector sharedDirector] runWithScene: [TestLayer scene]];
+    //[SceneManager goMainMenu];
+    
+    /*
+     
+     //TODO:API HOOKS
+     
+     FLURRY API
+     
+     Crittercism API
+     
+     TestFlight API
+     
+     
+     */
 }
 
 

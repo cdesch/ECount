@@ -40,6 +40,8 @@
 		232AB17014B530660080B218 /* CCScrollLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 232AB16F14B530660080B218 /* CCScrollLayer.m */; };
 		232AB17514B5378F0080B218 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 232AB17414B5378F0080B218 /* StoreKit.framework */; };
 		232AB18214B53C190080B218 /* DragSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 232AB18114B53C190080B218 /* DragSprite.m */; };
+		23423A4414B8CE2B00169B50 /* TokenSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 23423A4314B8CE2A00169B50 /* TokenSprite.m */; };
+		23423A4814B8D28E00169B50 /* TokenData.m in Sources */ = {isa = PBXBuildFile; fileRef = 23423A4714B8D28E00169B50 /* TokenData.m */; };
 		2350F27914B4C491006812AE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2350F27814B4C491006812AE /* QuartzCore.framework */; };
 		2350F27B14B4C491006812AE /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2350F27A14B4C491006812AE /* OpenGLES.framework */; };
 		2350F27D14B4C491006812AE /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2350F27C14B4C491006812AE /* OpenAL.framework */; };
@@ -260,6 +262,10 @@
 		232AB17414B5378F0080B218 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		232AB18014B53C180080B218 /* DragSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragSprite.h; sourceTree = "<group>"; };
 		232AB18114B53C190080B218 /* DragSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragSprite.m; sourceTree = "<group>"; };
+		23423A4214B8CE2A00169B50 /* TokenSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenSprite.h; sourceTree = "<group>"; };
+		23423A4314B8CE2A00169B50 /* TokenSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenSprite.m; sourceTree = "<group>"; };
+		23423A4614B8D28E00169B50 /* TokenData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenData.h; sourceTree = "<group>"; };
+		23423A4714B8D28E00169B50 /* TokenData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenData.m; sourceTree = "<group>"; };
 		2350F27414B4C491006812AE /* ECount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ECount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2350F27814B4C491006812AE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2350F27A14B4C491006812AE /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -770,6 +776,10 @@
 				23795BD914B64DAB0065AE7D /* MyContactListener.mm */,
 				23795C1914B6924D0065AE7D /* StackSprite.h */,
 				23795C1A14B692520065AE7D /* StackSprite.m */,
+				23423A4214B8CE2A00169B50 /* TokenSprite.h */,
+				23423A4314B8CE2A00169B50 /* TokenSprite.m */,
+				23423A4614B8D28E00169B50 /* TokenData.h */,
+				23423A4714B8D28E00169B50 /* TokenData.m */,
 				232AB12F14B5252D0080B218 /* Data */,
 				232AB11214B525140080B218 /* Scenes */,
 				2350F28914B4C491006812AE /* Resources */,
@@ -1494,6 +1504,8 @@
 				23795BDA14B64DAB0065AE7D /* MyContactListener.mm in Sources */,
 				23795BEC14B6562F0065AE7D /* ccHashSet.m in Sources */,
 				23795C1B14B692580065AE7D /* StackSprite.m in Sources */,
+				23423A4414B8CE2B00169B50 /* TokenSprite.m in Sources */,
+				23423A4814B8D28E00169B50 /* TokenData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,12 +6,12 @@
 //  Copyright Desch Enterprises 2012. All rights reserved.
 //
 
-
 // When you import this file, you import all the cocos2d classes
 #import "cocos2d.h"
 #import "Box2D.h"
 #import "GLES-Render.h"
 #import "MyContactListener.h"
+#import "TokenData.h"
 
 // HelloWorldLayer
 @interface HelloWorldLayer : CCLayer
@@ -24,13 +24,16 @@
     b2Body *_groundBody;
     b2Fixture *_bottomFixture;
     
-    CGPoint stackPosition;
+    NSMutableDictionary* tokenDictionary; 
+    
 }
 
 // returns a CCScene that contains the HelloWorldLayer as the only child
 +(CCScene *) scene;
 // adds a new sprite at a given coordinate
--(void) addNewSpriteWithCoords:(CGPoint)p;
+- (void)spawnSprite:(NSString*)imageName tag:(NSInteger)tag;
+
+- (void)addNewSpriteWithCoords:(CGPoint)p;
 - (bool)detectCollision:(CCNode *)obj with:(CCNode*)object2;
 
 

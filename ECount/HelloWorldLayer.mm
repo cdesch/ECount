@@ -13,8 +13,6 @@
 
 #import "TokenData.h"
 #import "TokenSprite.h"
-#import "WorkspaceData.h"
-#import "WorkspaceSprite.h"
 
 //Pixel to metres ratio. Box2D uses metres as the unit for measurement.
 //This ratio defines how many pixels correspond to 1 Box2D "metre"
@@ -61,11 +59,34 @@ typedef enum {
 	// return the scene
 	return scene;
 }
-/*
-- (b2Vec2)getb2Vec2:(TokenData*)token{
-  //TODO: Implementation Goes here  
+
+//get the vertices for the object 
+- (NSMutableArray*)getb2Vec2:(TokenSprite*)token{
+    
+    NSMutableArray* vertices = [[[NSMutableArray alloc] init] autorelease];
+    
+    //token
+    int const num = 8;
+    b2Vec2 verts[num];
+    verts[0] = b2Vec2(-3.5f / PTM_RATIO, 51.7f / PTM_RATIO),
+    verts[1] = b2Vec2(-41.7f / PTM_RATIO, 30.5f / PTM_RATIO);
+    verts[2] = b2Vec2(-50.7f / PTM_RATIO, -2.0f / PTM_RATIO);
+    verts[3] = b2Vec2(-40.0f / PTM_RATIO, -31.5f / PTM_RATIO);
+    verts[4] = b2Vec2(-9.7f / PTM_RATIO, -49.0f / PTM_RATIO);
+    verts[5] = b2Vec2(30.2f / PTM_RATIO, -39.2f / PTM_RATIO);
+    verts[6] = b2Vec2(47.7f / PTM_RATIO, 5.5f / PTM_RATIO);
+    verts[7] = b2Vec2(23.0f / PTM_RATIO, 43.7f / PTM_RATIO);
+    
+    
+    //[vertices addObject:[NSData dataWithBytes:verts length:sizeof(b2Vec2)*2]];
+    [vertices addObject:[NSData dataWithBytes:&verts length:sizeof(verts)]];
+    [vertices addObject:[NSNumber numberWithInt:num]];  //Add number of vertices for reference
+    
+    //return the array
+    return vertices;
+    
 }
-*/
+
 - (void)addBoxBodyForSprite:(TokenSprite *)sprite {
     
     b2BodyDef spriteBodyDef;
@@ -78,9 +99,8 @@ typedef enum {
     /*spriteShape.SetAsBox(sprite.contentSize.width/PTM_RATIO/2,
      sprite.contentSize.height/PTM_RATIO/2);
      */
-    
-    if(sprite.tag == 4){
-        int num = 8;
+    if(sprite.itemType == 4){
+        /*int num = 8;
         b2Vec2 verts[] = {
             b2Vec2(-3.5f / PTM_RATIO, 51.7f / PTM_RATIO),
             b2Vec2(-41.7f / PTM_RATIO, 30.5f / PTM_RATIO),
@@ -91,11 +111,12 @@ typedef enum {
             b2Vec2(47.7f / PTM_RATIO, 5.5f / PTM_RATIO),
             b2Vec2(23.0f / PTM_RATIO, 43.7f / PTM_RATIO)
         };
+        */
+        NSMutableArray* array = [self getb2Vec2:sprite];
+        b2Vec2 * vl = (b2Vec2*)[[array objectAtIndex:0] bytes];
+        spriteShape.Set(vl, [[array objectAtIndex:1] intValue] );
         
-
-        spriteShape.Set(verts, num);
-
-    }else if (sprite.tag == 5){
+    }else if (sprite.itemType == 5){
         int num = 8;
         b2Vec2 verts[] = {
             b2Vec2(-176.2f / PTM_RATIO, -118.4f / PTM_RATIO),
@@ -110,7 +131,7 @@ typedef enum {
         
         spriteShape.Set(verts, num);
     }    
-    else if (sprite.tag == 3){
+    else if (sprite.itemType == 3){
         int num = 8;
         b2Vec2 verts[] = {
             b2Vec2(-0.7f / PTM_RATIO, 48.5f / PTM_RATIO),
@@ -125,7 +146,7 @@ typedef enum {
         spriteShape.Set(verts, num);
     }
     
-    else if (sprite.tag == 2) {
+    else if (sprite.itemType == 2) {
         //row 1, col 4
         int num = 7;
         b2Vec2 verts[] = {
@@ -154,124 +175,14 @@ typedef enum {
         };
         spriteShape.Set(verts, num);
     }
-    
+
+     
     b2FixtureDef spriteShapeDef;
     spriteShapeDef.shape = &spriteShape;
     spriteShapeDef.density = 10.0;
-    
-    /*
-    if(sprite.itemState == kWorkspace){
-        spriteShapeDef.friction = 1.4f;
-        spriteShapeDef.restitution = 0.1f;
-    }*/
-    //spriteShapeDef.friction = 30.4f;
-    //spriteShapeDef.restitution = 0.1f;
-    
-    /*
-     //uncomment for hockey mode
-    if(sprite.itemState == kSpawnStack){
-        spriteShapeDef.isSensor = true;
-    }else{
-        spriteShapeDef.isSensor = false;
-    }*/
-    
+   
     spriteShapeDef.isSensor = true;
 
-    spriteBody->CreateFixture(&spriteShapeDef);
-    
-}
-
-
-- (void)addBoxBodyForWorkSpaceSprite:(WorkspaceSprite *)sprite {
-    
-    b2BodyDef spriteBodyDef;
-    spriteBodyDef.type = b2_dynamicBody;
-    spriteBodyDef.position.Set(sprite.position.x/PTM_RATIO, sprite.position.y/PTM_RATIO);
-    spriteBodyDef.userData = sprite;
-    b2Body *spriteBody = _world->CreateBody(&spriteBodyDef);
-    
-    b2PolygonShape spriteShape;
-    /*spriteShape.SetAsBox(sprite.contentSize.width/PTM_RATIO/2,
-     sprite.contentSize.height/PTM_RATIO/2);
-     */
-    
-    if(sprite.tag == 4){
-        int num = 8;
-        b2Vec2 verts[] = {
-            b2Vec2(-3.5f / PTM_RATIO, 51.7f / PTM_RATIO),
-            b2Vec2(-41.7f / PTM_RATIO, 30.5f / PTM_RATIO),
-            b2Vec2(-50.7f / PTM_RATIO, -2.0f / PTM_RATIO),
-            b2Vec2(-40.0f / PTM_RATIO, -31.5f / PTM_RATIO),
-            b2Vec2(-9.7f / PTM_RATIO, -49.0f / PTM_RATIO),
-            b2Vec2(30.2f / PTM_RATIO, -39.2f / PTM_RATIO),
-            b2Vec2(47.7f / PTM_RATIO, 5.5f / PTM_RATIO),
-            b2Vec2(23.0f / PTM_RATIO, 43.7f / PTM_RATIO)
-        };
-        
-        
-        spriteShape.Set(verts, num);
-        
-    }else if (sprite.tag == 3){
-        int num = 8;
-        b2Vec2 verts[] = {
-            b2Vec2(-0.7f / PTM_RATIO, 48.5f / PTM_RATIO),
-            b2Vec2(-35.7f / PTM_RATIO, 33.0f / PTM_RATIO),
-            b2Vec2(-47.7f / PTM_RATIO, 2.5f / PTM_RATIO),
-            b2Vec2(-35.5f / PTM_RATIO, -30.5f / PTM_RATIO),
-            b2Vec2(-6.2f / PTM_RATIO, -46.5f / PTM_RATIO),
-            b2Vec2(34.7f / PTM_RATIO, -32.5f / PTM_RATIO),
-            b2Vec2(46.7f / PTM_RATIO, 11.2f / PTM_RATIO),
-            b2Vec2(19.7f / PTM_RATIO, 43.5f / PTM_RATIO)
-        };
-        spriteShape.Set(verts, num);
-    }
-    
-    else if (sprite.tag == 2) {
-        //row 1, col 4
-        int num = 7;
-        b2Vec2 verts[] = {
-            b2Vec2(-2.5f / PTM_RATIO, 45.1f / PTM_RATIO),
-            b2Vec2(-43.3f / PTM_RATIO, 14.3f / PTM_RATIO),
-            b2Vec2(-39.4f / PTM_RATIO, -23.2f / PTM_RATIO),
-            b2Vec2(-4.2f / PTM_RATIO, -44.0f / PTM_RATIO),
-            b2Vec2(35.5f / PTM_RATIO, -24.7f / PTM_RATIO),
-            b2Vec2(43.3f / PTM_RATIO, 10.8f / PTM_RATIO),
-            b2Vec2(14.1f / PTM_RATIO, 42.2f / PTM_RATIO)
-        };
-        spriteShape.Set(verts, num);
-    } else {
-        // Do the same thing as the above, but use the car data this time
-        //row 1, col 1
-        int num = 8;
-        b2Vec2 verts[] = {
-            b2Vec2(-3.5f / PTM_RATIO, 62.0f / PTM_RATIO),
-            b2Vec2(-52.0f / PTM_RATIO, 34.0f / PTM_RATIO),
-            b2Vec2(-61.0f / PTM_RATIO, -3.5f / PTM_RATIO),
-            b2Vec2(-39.0f / PTM_RATIO, -47.5f / PTM_RATIO),
-            b2Vec2(-0.5f / PTM_RATIO, -61.0f / PTM_RATIO),
-            b2Vec2(48.5f / PTM_RATIO, -36.0f / PTM_RATIO),
-            b2Vec2(58.0f / PTM_RATIO, 15.5f / PTM_RATIO),
-            b2Vec2(12.5f / PTM_RATIO, 59.5f / PTM_RATIO)
-        };
-        spriteShape.Set(verts, num);
-    }
-    
-    b2FixtureDef spriteShapeDef;
-    spriteShapeDef.shape = &spriteShape;
-    spriteShapeDef.density = 10.0;
-    //spriteShapeDef.friction = 0.4f;
-    //spriteShapeDef.restitution = 0.1f;
-    
-    /*
-     //uncomment for hockey mode
-     if(sprite.itemState == kSpawnStack){
-     spriteShapeDef.isSensor = true;
-     }else{
-     spriteShapeDef.isSensor = false;
-     }*/
-    
-    spriteShapeDef.isSensor = true;
-    
     spriteBody->CreateFixture(&spriteShapeDef);
     
 }
@@ -315,25 +226,6 @@ typedef enum {
     
 }
 
-- (void)spawnSprite:(NSString*)imageName tag:(NSInteger)tag{
-    
-    
-    /*
-    CCSprite *car = [CCSprite spriteWithSpriteFrameName:@"quarter.png"];
-    car.position = ccp(555, 555);
-    car.tag = tag;
-    //car.itemValue = 25.0f;
-
-    [self addBoxBodyForSprite:car];
-    
-    [_spriteSheet addChild:car z:0 tag:tag];
-     */
-    
-    //TokenSprite *token = [TokenSprite spriteWithSpriteFrame:imageName];
-    //token.position = 
-    
-}
-
 //Spawn a Sprite from a Token Data
 - (void)spawnSpriteFromToken:(TokenData*)token state:(int)state {
     
@@ -349,23 +241,6 @@ typedef enum {
     
 }
 
-
-
-
-//Spawn a Sprite from a Token Data
-- (void)spawnSpriteFromWorkspace:(WorkspaceData*)workspace{
-    
-    /*
-    WorkspaceSprite *sprite = [WorkspaceSprite spriteWithSpriteFrameName:workspace.imageName];
-    sprite.name = workspace.name;
-    sprite.position = workspace.itemPosition;
-    sprite.itemType = workspace.itemType;
-    sprite.itemState = kWorkspace;
-    sprite.tag = workspace.itemType;
-    [self addBoxBodyForWorkSpaceSprite:sprite];
-    [_spriteSheet addChild:sprite z:kSpriteSpawnLevel tag:workspace.itemType];
-    */
-}
 
 // on "init" you need to initialize your instance
 -(id) init
@@ -509,6 +384,10 @@ typedef enum {
         [self spawnSpriteFromToken:tokenData3 state:kSpawend];
         
 
+        // Preload effect
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"coin-drop-1.caf"];
+
+        
         //[self schedule:@selector(secondUpdate:) interval:1.0];
         [self schedule:@selector(tick:)];
         
@@ -615,8 +494,12 @@ typedef enum {
                     }
                 }
             }else if(sprite.itemState == kWorkspace){
+                //Set HUD View 
+                
+                
                 //Check end game case
-                NSLog(@"Workspace: %@  Value: %f", sprite.name, sprite.itemValue);
+                //NSLog(@"Workspace: %@  Value: %f", sprite.name, sprite.itemValue);
+                
                 //Reset to 0 if not
                 sprite.itemValue = 0;
             }
@@ -690,7 +573,7 @@ typedef enum {
     
     // If we've destroyed anything, play an amusing and malicious sound effect!  ;]
     if (toDestroy.size() > 0) {
-        //[[SimpleAudioEngine sharedEngine] playEffect:@"hahaha.caf"];   
+        [[SimpleAudioEngine sharedEngine] playEffect:@"coin-drop-1.caf"];   
     }
 }
 

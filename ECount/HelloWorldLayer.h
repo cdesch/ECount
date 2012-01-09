@@ -12,6 +12,7 @@
 #import "GLES-Render.h"
 #import "MyContactListener.h"
 #import "TokenData.h"
+#import "SimpleAudioEngine.h"
 
 // HelloWorldLayer
 @interface HelloWorldLayer : CCLayer
@@ -26,6 +27,9 @@
     
     NSMutableDictionary* tokenDictionary; 
     NSMutableDictionary* workspaceDictionary;
+    
+    //Options Menu Parameters
+    BOOL soundEffects;      //
     
 }
 

@@ -5,18 +5,29 @@
 //  Created by Chris Desch on 1/4/12.
 //  Copyright Desch Enterprises 2012. All rights reserved.
 //
+//TODO://Gravity Mode with accelarometer
 
 
 // Import the interfaces
 #import "HelloWorldLayer.h"
+
 #import "TokenData.h"
 #import "TokenSprite.h"
+#import "WorkspaceData.h"
+#import "WorkspaceSprite.h"
+
 //Pixel to metres ratio. Box2D uses metres as the unit for measurement.
 //This ratio defines how many pixels correspond to 1 Box2D "metre"
 //Box2D is optimized for objects of 1x1 metre therefore it makes sense
 //to define the ratio so that your most common object type is 1x1 metre.
 #define PTM_RATIO 32
-#define kSpriteLevel 2
+#define kBackgroundLevel 1
+#define kSpriteSpawnLevel 2
+#define kSpriteActiveLevel 3
+
+#define kSpaceDamping 0.0f
+#define kWorkspaceDamping 2.0f
+
 //Touches
 
 // enums that will be used as tags
@@ -29,7 +40,8 @@ enum {
 typedef enum {
     kActive,
     kSpawend,
-    kSpawnStack
+    kSpawnStack,
+    kWorkspace
 } SpriteState;
 
 // HelloWorldLayer implementation
@@ -66,7 +78,155 @@ typedef enum {
     /*spriteShape.SetAsBox(sprite.contentSize.width/PTM_RATIO/2,
      sprite.contentSize.height/PTM_RATIO/2);
      */
-    if (sprite.tag == 2) {
+    
+    if(sprite.tag == 4){
+        int num = 8;
+        b2Vec2 verts[] = {
+            b2Vec2(-3.5f / PTM_RATIO, 51.7f / PTM_RATIO),
+            b2Vec2(-41.7f / PTM_RATIO, 30.5f / PTM_RATIO),
+            b2Vec2(-50.7f / PTM_RATIO, -2.0f / PTM_RATIO),
+            b2Vec2(-40.0f / PTM_RATIO, -31.5f / PTM_RATIO),
+            b2Vec2(-9.7f / PTM_RATIO, -49.0f / PTM_RATIO),
+            b2Vec2(30.2f / PTM_RATIO, -39.2f / PTM_RATIO),
+            b2Vec2(47.7f / PTM_RATIO, 5.5f / PTM_RATIO),
+            b2Vec2(23.0f / PTM_RATIO, 43.7f / PTM_RATIO)
+        };
+        
+
+        spriteShape.Set(verts, num);
+
+    }else if (sprite.tag == 5){
+        int num = 8;
+        b2Vec2 verts[] = {
+            b2Vec2(-176.2f / PTM_RATIO, -118.4f / PTM_RATIO),
+            b2Vec2(164.6f / PTM_RATIO, -118.8f / PTM_RATIO),
+            b2Vec2(170.6f / PTM_RATIO, -47.0f / PTM_RATIO),
+            b2Vec2(169.2f / PTM_RATIO, 51.6f / PTM_RATIO),
+            b2Vec2(162.8f / PTM_RATIO, 118.4f / PTM_RATIO),
+            b2Vec2(-174.1f / PTM_RATIO, 120.9f / PTM_RATIO),
+            b2Vec2(-180.1f / PTM_RATIO, 52.7f / PTM_RATIO),
+            b2Vec2(-180.5f / PTM_RATIO, -47.7f / PTM_RATIO)
+        };
+        
+        spriteShape.Set(verts, num);
+    }    
+    else if (sprite.tag == 3){
+        int num = 8;
+        b2Vec2 verts[] = {
+            b2Vec2(-0.7f / PTM_RATIO, 48.5f / PTM_RATIO),
+            b2Vec2(-35.7f / PTM_RATIO, 33.0f / PTM_RATIO),
+            b2Vec2(-47.7f / PTM_RATIO, 2.5f / PTM_RATIO),
+            b2Vec2(-35.5f / PTM_RATIO, -30.5f / PTM_RATIO),
+            b2Vec2(-6.2f / PTM_RATIO, -46.5f / PTM_RATIO),
+            b2Vec2(34.7f / PTM_RATIO, -32.5f / PTM_RATIO),
+            b2Vec2(46.7f / PTM_RATIO, 11.2f / PTM_RATIO),
+            b2Vec2(19.7f / PTM_RATIO, 43.5f / PTM_RATIO)
+        };
+        spriteShape.Set(verts, num);
+    }
+    
+    else if (sprite.tag == 2) {
+        //row 1, col 4
+        int num = 7;
+        b2Vec2 verts[] = {
+            b2Vec2(-2.5f / PTM_RATIO, 45.1f / PTM_RATIO),
+            b2Vec2(-43.3f / PTM_RATIO, 14.3f / PTM_RATIO),
+            b2Vec2(-39.4f / PTM_RATIO, -23.2f / PTM_RATIO),
+            b2Vec2(-4.2f / PTM_RATIO, -44.0f / PTM_RATIO),
+            b2Vec2(35.5f / PTM_RATIO, -24.7f / PTM_RATIO),
+            b2Vec2(43.3f / PTM_RATIO, 10.8f / PTM_RATIO),
+            b2Vec2(14.1f / PTM_RATIO, 42.2f / PTM_RATIO)
+        };
+        spriteShape.Set(verts, num);
+    } else {
+        // Do the same thing as the above, but use the car data this time
+        //row 1, col 1
+        int num = 8;
+        b2Vec2 verts[] = {
+            b2Vec2(-3.5f / PTM_RATIO, 62.0f / PTM_RATIO),
+            b2Vec2(-52.0f / PTM_RATIO, 34.0f / PTM_RATIO),
+            b2Vec2(-61.0f / PTM_RATIO, -3.5f / PTM_RATIO),
+            b2Vec2(-39.0f / PTM_RATIO, -47.5f / PTM_RATIO),
+            b2Vec2(-0.5f / PTM_RATIO, -61.0f / PTM_RATIO),
+            b2Vec2(48.5f / PTM_RATIO, -36.0f / PTM_RATIO),
+            b2Vec2(58.0f / PTM_RATIO, 15.5f / PTM_RATIO),
+            b2Vec2(12.5f / PTM_RATIO, 59.5f / PTM_RATIO)
+        };
+        spriteShape.Set(verts, num);
+    }
+    
+    b2FixtureDef spriteShapeDef;
+    spriteShapeDef.shape = &spriteShape;
+    spriteShapeDef.density = 10.0;
+    
+    /*
+    if(sprite.itemState == kWorkspace){
+        spriteShapeDef.friction = 1.4f;
+        spriteShapeDef.restitution = 0.1f;
+    }*/
+    //spriteShapeDef.friction = 30.4f;
+    //spriteShapeDef.restitution = 0.1f;
+    
+    /*
+     //uncomment for hockey mode
+    if(sprite.itemState == kSpawnStack){
+        spriteShapeDef.isSensor = true;
+    }else{
+        spriteShapeDef.isSensor = false;
+    }*/
+    
+    spriteShapeDef.isSensor = true;
+
+    spriteBody->CreateFixture(&spriteShapeDef);
+    
+}
+
+
+- (void)addBoxBodyForWorkSpaceSprite:(WorkspaceSprite *)sprite {
+    
+    b2BodyDef spriteBodyDef;
+    spriteBodyDef.type = b2_dynamicBody;
+    spriteBodyDef.position.Set(sprite.position.x/PTM_RATIO, sprite.position.y/PTM_RATIO);
+    spriteBodyDef.userData = sprite;
+    b2Body *spriteBody = _world->CreateBody(&spriteBodyDef);
+    
+    b2PolygonShape spriteShape;
+    /*spriteShape.SetAsBox(sprite.contentSize.width/PTM_RATIO/2,
+     sprite.contentSize.height/PTM_RATIO/2);
+     */
+    
+    if(sprite.tag == 4){
+        int num = 8;
+        b2Vec2 verts[] = {
+            b2Vec2(-3.5f / PTM_RATIO, 51.7f / PTM_RATIO),
+            b2Vec2(-41.7f / PTM_RATIO, 30.5f / PTM_RATIO),
+            b2Vec2(-50.7f / PTM_RATIO, -2.0f / PTM_RATIO),
+            b2Vec2(-40.0f / PTM_RATIO, -31.5f / PTM_RATIO),
+            b2Vec2(-9.7f / PTM_RATIO, -49.0f / PTM_RATIO),
+            b2Vec2(30.2f / PTM_RATIO, -39.2f / PTM_RATIO),
+            b2Vec2(47.7f / PTM_RATIO, 5.5f / PTM_RATIO),
+            b2Vec2(23.0f / PTM_RATIO, 43.7f / PTM_RATIO)
+        };
+        
+        
+        spriteShape.Set(verts, num);
+        
+    }else if (sprite.tag == 3){
+        int num = 8;
+        b2Vec2 verts[] = {
+            b2Vec2(-0.7f / PTM_RATIO, 48.5f / PTM_RATIO),
+            b2Vec2(-35.7f / PTM_RATIO, 33.0f / PTM_RATIO),
+            b2Vec2(-47.7f / PTM_RATIO, 2.5f / PTM_RATIO),
+            b2Vec2(-35.5f / PTM_RATIO, -30.5f / PTM_RATIO),
+            b2Vec2(-6.2f / PTM_RATIO, -46.5f / PTM_RATIO),
+            b2Vec2(34.7f / PTM_RATIO, -32.5f / PTM_RATIO),
+            b2Vec2(46.7f / PTM_RATIO, 11.2f / PTM_RATIO),
+            b2Vec2(19.7f / PTM_RATIO, 43.5f / PTM_RATIO)
+        };
+        spriteShape.Set(verts, num);
+    }
+    
+    else if (sprite.tag == 2) {
         //row 1, col 4
         int num = 7;
         b2Vec2 verts[] = {
@@ -101,12 +261,16 @@ typedef enum {
     spriteShapeDef.density = 10.0;
     //spriteShapeDef.friction = 0.4f;
     //spriteShapeDef.restitution = 0.1f;
-    if(sprite.itemState == kSpawnStack){
-        spriteShapeDef.isSensor = true;
-    }else{
-        spriteShapeDef.isSensor = false;
-    }
     
+    /*
+     //uncomment for hockey mode
+     if(sprite.itemState == kSpawnStack){
+     spriteShapeDef.isSensor = true;
+     }else{
+     spriteShapeDef.isSensor = false;
+     }*/
+    
+    spriteShapeDef.isSensor = true;
     
     spriteBody->CreateFixture(&spriteShapeDef);
     
@@ -171,25 +335,36 @@ typedef enum {
 }
 
 //Spawn a Sprite from a Token Data
-- (void)spawnSpriteFromToken:(TokenData*)token isStack:(BOOL)isStack{
+- (void)spawnSpriteFromToken:(TokenData*)token state:(int)state {
     
     TokenSprite *sprite = [TokenSprite spriteWithSpriteFrameName:token.imageName];
     sprite.name = token.name;
     sprite.position = token.itemPosition;
     sprite.itemType = token.itemType;
-    
-    int state;
-    if(isStack){
-        state = kSpawnStack;
-    }else{
-        state = kSpawend;
-    }
-    
+    sprite.itemValue = token.itemValue;
     sprite.itemState = state;
     sprite.tag = token.itemType;        
     [self addBoxBodyForSprite:sprite];
-    [_spriteSheet addChild:sprite z:1 tag:token.itemType];
+    [_spriteSheet addChild:sprite z:kSpriteSpawnLevel tag:token.itemType];
     
+}
+
+
+
+
+//Spawn a Sprite from a Token Data
+- (void)spawnSpriteFromWorkspace:(WorkspaceData*)workspace{
+    
+    /*
+    WorkspaceSprite *sprite = [WorkspaceSprite spriteWithSpriteFrameName:workspace.imageName];
+    sprite.name = workspace.name;
+    sprite.position = workspace.itemPosition;
+    sprite.itemType = workspace.itemType;
+    sprite.itemState = kWorkspace;
+    sprite.tag = workspace.itemType;
+    [self addBoxBodyForWorkSpaceSprite:sprite];
+    [_spriteSheet addChild:sprite z:kSpriteSpawnLevel tag:workspace.itemType];
+    */
 }
 
 // on "init" you need to initialize your instance
@@ -199,7 +374,6 @@ typedef enum {
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init])) {
 
-        
         // enable touches
 		self.isTouchEnabled = YES;
         CGSize screenSize = [CCDirector sharedDirector].winSize;
@@ -255,33 +429,86 @@ typedef enum {
         tokenDictionary = [[NSMutableDictionary alloc] init];
         
         TokenData* tokenData = [[TokenData alloc] init];
-        tokenData = [[TokenData alloc] init];
         tokenData.name = @"quarter";
         tokenData.imageName = @"quarter.png";
-        tokenData.itemPosition = CGPointMake(555, 555);
+        tokenData.itemPosition = CGPointMake(200, 650);
         tokenData.itemType = 1;
         tokenData.itemValue = 1;
 
         [tokenDictionary setObject:tokenData forKey:tokenData.name];
 
         TokenData* tokenData1 = [[TokenData alloc] init];
-        tokenData1 = [[TokenData alloc] init];
         tokenData1.name = @"dime";
         tokenData1.imageName = @"dime.png";
-        tokenData1.itemPosition = CGPointMake(200, 200);
+        tokenData1.itemPosition = CGPointMake(200, 500);
         tokenData1.itemType = 2;
         tokenData1.itemValue = 1;
 
         [tokenDictionary setObject:tokenData1 forKey:tokenData1.name];
+        
+        
+        TokenData* tokenData2 = [[TokenData alloc] init];
+        tokenData2.name = @"penny";
+        tokenData2.imageName = @"penny.png";
+        tokenData2.itemPosition = CGPointMake(200 , 200);
+        tokenData2.itemType = 3;
+        tokenData2.itemValue = 1;
+        
+        [tokenDictionary setObject:tokenData2 forKey:tokenData2.name];
+        
+        TokenData* tokenData3 = [[TokenData alloc] init];
+        tokenData3.name = @"nickel";
+        tokenData3.imageName = @"nickel.png";
+        tokenData3.itemPosition = CGPointMake(200, 350);
+        tokenData3.itemType = 4;
+        tokenData3.itemValue = 1;
+        
+        [tokenDictionary setObject:tokenData3 forKey:tokenData3.name];
 
-        [self spawnSpriteFromToken:tokenData isStack:YES];
-        [self spawnSpriteFromToken:tokenData1 isStack:YES];
-        [self spawnSpriteFromToken:tokenData isStack:NO];
-        [self spawnSpriteFromToken:tokenData1 isStack:NO];
+        [self spawnSpriteFromToken:tokenData state:kSpawnStack];
+        [self spawnSpriteFromToken:tokenData1 state:kSpawnStack];
+        [self spawnSpriteFromToken:tokenData2 state:kSpawnStack];
+        [self spawnSpriteFromToken:tokenData3 state:kSpawnStack];
+        
 
-        [tokenData1 release];
-        [tokenData release];
-      
+        
+        //Create Workspaces
+        workspaceDictionary = [[NSMutableDictionary alloc] init];
+        
+        //WorkspaceData* workspaceData = [[WorkspaceData alloc] init];
+        //workspaceData = [[WorkspaceData alloc] init];
+        TokenData* workspaceData = [[TokenData alloc] init];
+
+        workspaceData.name = @"TrayTop";
+        workspaceData.imageName = @"TrayTop.png";
+        workspaceData.itemPosition = CGPointMake(600, 600);
+        workspaceData.itemType = 5;
+        workspaceData.itemValue = 1;
+        
+        [workspaceDictionary setObject:workspaceData forKey:workspaceData.name];
+        
+        
+        [self spawnSpriteFromToken:workspaceData state:kWorkspace];
+        
+        
+        TokenData* workspaceData1 = [[TokenData alloc] init];
+        
+        workspaceData1.name = @"TrayTop1";
+        workspaceData1.imageName = @"TrayTop.png";
+        workspaceData1.itemPosition = CGPointMake(600, 200);
+        workspaceData1.itemType = 5;
+        workspaceData1.itemValue = 1;
+
+        [workspaceDictionary setObject:workspaceData1 forKey:workspaceData1.name];
+        [self spawnSpriteFromToken:workspaceData1 state:kWorkspace];
+        //self spawn sprite
+
+        [self spawnSpriteFromToken:tokenData state:kSpawend];
+        [self spawnSpriteFromToken:tokenData1 state:kSpawend];
+        [self spawnSpriteFromToken:tokenData2 state:kSpawend];
+        [self spawnSpriteFromToken:tokenData3 state:kSpawend];
+        
+
         //[self schedule:@selector(secondUpdate:) interval:1.0];
         [self schedule:@selector(tick:)];
         
@@ -314,6 +541,10 @@ typedef enum {
     // Loop through all of the Box2D bodies in our Box2D world..
     for(b2Body *b = _world->GetBodyList(); b; b=b->GetNext()) {
         
+        //Turn off linear damping if it was set by a different cycle. 
+        b->SetLinearDamping(kSpaceDamping); 
+        b->SetAngularDamping(kSpaceDamping);
+        
         // See if there's any user data attached to the Box2D body
         // There should be, since we set it in addBoxBodyForSprite
         if (b->GetUserData() != NULL) {            
@@ -322,14 +553,13 @@ typedef enum {
             // it that way, so cast it...
             TokenSprite *sprite = (TokenSprite *)b->GetUserData();
             
-            // Convert the Cocos2D position/rotation of the sprite to the Box2D position/rotation
-            //b2Vec2 b2Position = b2Vec2(sprite.position.x/PTM_RATIO, sprite.position.y/PTM_RATIO);
-            //float32 b2Angle = -1 * CC_DEGREES_TO_RADIANS(sprite.rotation);
-            
-            // Update the Box2D position/rotation to match the Cocos2D position/rotation
-
-            //b->SetTransform(b2Position, b2Angle);
-            
+            /*
+            if( [sprite isKindOfClass:[WorkspaceSprite class]]){
+                NSLog(@"Workspace found");
+                //Find all sprites 
+                
+                return; 
+            }*/
             
             //Only Move sprites that are not a stack
             if(sprite.itemState != kSpawnStack){
@@ -341,6 +571,7 @@ typedef enum {
             }else{
                 //NSLog(@"itemType: %@", sprite.itemType);
             }
+            
 
             //Check the stack to see if the spawned sprite resting on it has left
             //spawn a new sprite and change its properties if it has left the stack
@@ -359,13 +590,13 @@ typedef enum {
                             //Only check if it is in a kSpawned State AND is of that sprite type
                             if (subSprite.itemState == kSpawend && subSprite.itemType == sprite.itemType){
                                 
-                                
                                 //Check to see if this sprite is colliding (resting).  skip if it is and check the next one
                                 //if(![self detectCollision:sprite with:subSprite]){
                                 if(![sprite collidesWith:subSprite]){    
                                     
                                     //Change properties of subsprite
                                     subSprite.itemState = kActive;
+                                    [_spriteSheet reorderChild:subSprite z:kSpriteActiveLevel];
                                     
                                     //Change the Fixture type 
                                     for(b2Fixture *fixture = c->GetFixtureList(); fixture; fixture=fixture->GetNext()) {
@@ -373,7 +604,7 @@ typedef enum {
                                     }
                                     
                                     //Spawn New Sprite in place
-                                    [self spawnSpriteFromToken:[tokenDictionary objectForKey:sprite.name] isStack:NO];
+                                    [self spawnSpriteFromToken:[tokenDictionary objectForKey:sprite.name] state:kSpawend];
                                     NSLog(@"Spawned %@", sprite.name);
                                     //We are done for now. Return for the next Loop
                                     return;
@@ -383,9 +614,16 @@ typedef enum {
                         }
                     }
                 }
+            }else if(sprite.itemState == kWorkspace){
+                //Check end game case
+                NSLog(@"Workspace: %@  Value: %f", sprite.name, sprite.itemValue);
+                //Reset to 0 if not
+                sprite.itemValue = 0;
             }
         }
     }
+
+    
     
     // Loop through all of the box2d bodies that are currently colliding, that we have
     // gathered with our custom contact listener...
@@ -402,14 +640,22 @@ typedef enum {
             TokenSprite *spriteB = (TokenSprite *) bodyB->GetUserData();
             
             // Is sprite A a cat and sprite B a car?  If so, push the cat on a list to be destroyed...
-            if (spriteA.itemState == kActive && spriteB.itemState == kSpawnStack) {
+            if ((spriteA.itemState == kActive && spriteB.itemState == kSpawnStack) && (spriteB.itemType == spriteA.itemType )) {
                 toDestroy.push_back(bodyA);
             } 
             // Is sprite A a car and sprite B a cat?  If so, push the cat on a list to be destroyed...
-            else if (spriteA.itemState == kSpawnStack && spriteB.itemState == kActive) {
+            else if ((spriteA.itemState == kSpawnStack && spriteB.itemState == kActive) && (spriteB.itemType == spriteA.itemType)) {
                 toDestroy.push_back(bodyB);
-            } 
-            
+            }else if (spriteA.itemState ==  kWorkspace){
+                //Check if there are any conllisions with a workspace// Add the value of the collision to that workspace. 
+                spriteA.itemValue += spriteB.itemValue;
+                bodyB->SetLinearDamping(kWorkspaceDamping);
+                bodyB->SetAngularDamping(kWorkspaceDamping);
+            }else if (spriteB.itemState ==  kWorkspace){
+                spriteB.itemValue += spriteA.itemValue;
+                bodyA->SetLinearDamping(kWorkspaceDamping);
+                bodyA->SetAngularDamping(kWorkspaceDamping);
+            }
         }        
     }
     
@@ -446,7 +692,6 @@ typedef enum {
     if (toDestroy.size() > 0) {
         //[[SimpleAudioEngine sharedEngine] playEffect:@"hahaha.caf"];   
     }
-    
 }
 
 #pragma mark - Touch Handling
@@ -465,7 +710,6 @@ typedef enum {
     for(b2Body *b = _world->GetBodyList(); b; b=b->GetNext()) {
         
 
-        
         // See if there's any user data attached to the Box2D body
         // There should be, since we set it in addBoxBodyForSprite
 
@@ -475,7 +719,7 @@ typedef enum {
             
             TokenSprite *sprite = (TokenSprite *)b->GetUserData();
 
-            if(sprite.itemState == kSpawnStack) return;
+            if(sprite.itemState == kSpawnStack || sprite.itemState == kWorkspace) return;
 
             for(b2Fixture *fixture = b->GetFixtureList(); fixture; fixture=fixture->GetNext()) {
             
@@ -516,6 +760,20 @@ typedef enum {
     if (_mouseJoint) {
         _world->DestroyJoint(_mouseJoint);
         _mouseJoint = NULL;
+        
+        //Check for any dangling mouse joints
+        if(_world->GetJointCount() > 0){
+            //NSLog(@"Found %d Extra Joints", _world->GetJointCount() );
+            for(b2Joint *b = _world->GetJointList(); b; b=b->GetNext()) {
+                //NSLog(@"Destproying the Dangling Joint");
+                //Should check type first
+                if(b){
+                    _world->DestroyJoint(b);
+                    b = NULL;
+                    return;
+                }
+            }
+        }
     }
     
 }
@@ -525,6 +783,20 @@ typedef enum {
     if (_mouseJoint) {
         _world->DestroyJoint(_mouseJoint);
         _mouseJoint = NULL;
+        
+        //Check for any dangling mouse joints
+        if(_world->GetJointCount() > 0){
+            //NSLog(@"Found %d Extra Joints", _world->GetJointCount() );
+            for(b2Joint *b = _world->GetJointList(); b; b=b->GetNext()) {
+                //NSLog(@"Destproying the Dangling Joint");
+                //Should check type first
+                if(b){
+                    _world->DestroyJoint(b);
+                    b = NULL;
+                    return;
+                }
+            }
+        }
     }  
 }
 

@@ -25,6 +25,7 @@
     b2Fixture *_bottomFixture;
     
     NSMutableDictionary* tokenDictionary; 
+    NSMutableDictionary* workspaceDictionary;
     
 }
 

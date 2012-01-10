@@ -41,9 +41,7 @@
 		232AB17514B5378F0080B218 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 232AB17414B5378F0080B218 /* StoreKit.framework */; };
 		232AB18214B53C190080B218 /* DragSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 232AB18114B53C190080B218 /* DragSprite.m */; };
 		23423A4414B8CE2B00169B50 /* TokenSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 23423A4314B8CE2A00169B50 /* TokenSprite.m */; };
-		23423A4814B8D28E00169B50 /* TokenData.m in Sources */ = {isa = PBXBuildFile; fileRef = 23423A4714B8D28E00169B50 /* TokenData.m */; };
-		23423A4F14B9053800169B50 /* WorkspaceData.m in Sources */ = {isa = PBXBuildFile; fileRef = 23423A4E14B9053800169B50 /* WorkspaceData.m */; };
-		23423A5214B9055400169B50 /* WorkspaceSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 23423A5114B9055300169B50 /* WorkspaceSprite.m */; };
+		23423A4814B8D28E00169B50 /* TokenData.mm in Sources */ = {isa = PBXBuildFile; fileRef = 23423A4714B8D28E00169B50 /* TokenData.mm */; };
 		23423A5514B90BEB00169B50 /* CoinImages128.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23423A5314B90BEB00169B50 /* CoinImages128.plist */; };
 		23423A5614B90BEB00169B50 /* CoinImages128.png in Resources */ = {isa = PBXBuildFile; fileRef = 23423A5414B90BEB00169B50 /* CoinImages128.png */; };
 		2350F27914B4C491006812AE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2350F27814B4C491006812AE /* QuartzCore.framework */; };
@@ -202,6 +200,11 @@
 		23795BDC14B64F660065AE7D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 23795BDB14B64F660065AE7D /* libz.dylib */; };
 		23795BEC14B6562F0065AE7D /* ccHashSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 23795BEB14B6562F0065AE7D /* ccHashSet.m */; };
 		23795C1B14B692580065AE7D /* StackSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 23795C1A14B692520065AE7D /* StackSprite.m */; };
+		23EE82EE14BB491D00084DEE /* coin-drop-1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 23EE82ED14BB491D00084DEE /* coin-drop-1.caf */; };
+		23EE82FA14BB605500084DEE /* LevelData.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE82F914BB605500084DEE /* LevelData.m */; };
+		23EE82FD14BB606F00084DEE /* LevelDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE82FC14BB606F00084DEE /* LevelDataParser.m */; };
+		23EE830114BB7CDB00084DEE /* TokenDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE830014BB7CDB00084DEE /* TokenDataParser.m */; };
+		23EE830314BB81BC00084DEE /* Tokens.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23EE830214BB81BB00084DEE /* Tokens.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -266,12 +269,8 @@
 		232AB18114B53C190080B218 /* DragSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragSprite.m; sourceTree = "<group>"; };
 		23423A4214B8CE2A00169B50 /* TokenSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenSprite.h; sourceTree = "<group>"; };
 		23423A4314B8CE2A00169B50 /* TokenSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenSprite.m; sourceTree = "<group>"; };
-		23423A4614B8D28E00169B50 /* TokenData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenData.h; sourceTree = "<group>"; };
-		23423A4714B8D28E00169B50 /* TokenData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenData.m; sourceTree = "<group>"; };
-		23423A4D14B9053700169B50 /* WorkspaceData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkspaceData.h; sourceTree = "<group>"; };
-		23423A4E14B9053800169B50 /* WorkspaceData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkspaceData.m; sourceTree = "<group>"; };
-		23423A5014B9055300169B50 /* WorkspaceSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkspaceSprite.h; sourceTree = "<group>"; };
-		23423A5114B9055300169B50 /* WorkspaceSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkspaceSprite.m; sourceTree = "<group>"; };
+		23423A4614B8D28E00169B50 /* TokenData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TokenData.h; path = ../TokenData.h; sourceTree = "<group>"; };
+		23423A4714B8D28E00169B50 /* TokenData.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = TokenData.mm; path = ../TokenData.mm; sourceTree = "<group>"; };
 		23423A5314B90BEB00169B50 /* CoinImages128.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CoinImages128.plist; sourceTree = "<group>"; };
 		23423A5414B90BEB00169B50 /* CoinImages128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CoinImages128.png; sourceTree = "<group>"; };
 		2350F27414B4C491006812AE /* ECount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ECount.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -592,6 +591,14 @@
 		23795BEB14B6562F0065AE7D /* ccHashSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ccHashSet.m; sourceTree = "<group>"; };
 		23795C1914B6924D0065AE7D /* StackSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackSprite.h; sourceTree = "<group>"; };
 		23795C1A14B692520065AE7D /* StackSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackSprite.m; sourceTree = "<group>"; };
+		23EE82ED14BB491D00084DEE /* coin-drop-1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "coin-drop-1.caf"; sourceTree = "<group>"; };
+		23EE82F814BB605500084DEE /* LevelData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelData.h; sourceTree = "<group>"; };
+		23EE82F914BB605500084DEE /* LevelData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelData.m; sourceTree = "<group>"; };
+		23EE82FB14BB606F00084DEE /* LevelDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelDataParser.h; sourceTree = "<group>"; };
+		23EE82FC14BB606F00084DEE /* LevelDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelDataParser.m; sourceTree = "<group>"; };
+		23EE82FF14BB7CDB00084DEE /* TokenDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenDataParser.h; sourceTree = "<group>"; };
+		23EE830014BB7CDB00084DEE /* TokenDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenDataParser.m; sourceTree = "<group>"; };
+		23EE830214BB81BB00084DEE /* Tokens.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tokens.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -643,6 +650,8 @@
 		232AB12F14B5252D0080B218 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				23EE82FE14BB618000084DEE /* TokenData */,
+				23EE82F714BB5FFA00084DEE /* LevelData */,
 				232AB13014B5252D0080B218 /* Chapters */,
 				232AB13614B5252D0080B218 /* GameData */,
 				232AB13C14B5252D0080B218 /* Levels */,
@@ -784,12 +793,6 @@
 				23795C1A14B692520065AE7D /* StackSprite.m */,
 				23423A4214B8CE2A00169B50 /* TokenSprite.h */,
 				23423A4314B8CE2A00169B50 /* TokenSprite.m */,
-				23423A4614B8D28E00169B50 /* TokenData.h */,
-				23423A4714B8D28E00169B50 /* TokenData.m */,
-				23423A4D14B9053700169B50 /* WorkspaceData.h */,
-				23423A4E14B9053800169B50 /* WorkspaceData.m */,
-				23423A5014B9055300169B50 /* WorkspaceSprite.h */,
-				23423A5114B9055300169B50 /* WorkspaceSprite.m */,
 				232AB12F14B5252D0080B218 /* Data */,
 				232AB11214B525140080B218 /* Scenes */,
 				2350F28914B4C491006812AE /* Resources */,
@@ -802,6 +805,7 @@
 		2350F28914B4C491006812AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				23EE82EB14BB491000084DEE /* Sounds */,
 				23795BFA14B660370065AE7D /* Images */,
 				232AB16714B525940080B218 /* XMLSupport */,
 				2350F28A14B4C491006812AE /* Default.png */,
@@ -1272,6 +1276,37 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		23EE82EB14BB491000084DEE /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				23EE82ED14BB491D00084DEE /* coin-drop-1.caf */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
+		23EE82F714BB5FFA00084DEE /* LevelData */ = {
+			isa = PBXGroup;
+			children = (
+				23EE82F814BB605500084DEE /* LevelData.h */,
+				23EE82F914BB605500084DEE /* LevelData.m */,
+				23EE82FB14BB606F00084DEE /* LevelDataParser.h */,
+				23EE82FC14BB606F00084DEE /* LevelDataParser.m */,
+			);
+			name = LevelData;
+			sourceTree = "<group>";
+		};
+		23EE82FE14BB618000084DEE /* TokenData */ = {
+			isa = PBXGroup;
+			children = (
+				23423A4614B8D28E00169B50 /* TokenData.h */,
+				23423A4714B8D28E00169B50 /* TokenData.mm */,
+				23EE82FF14BB7CDB00084DEE /* TokenDataParser.h */,
+				23EE830014BB7CDB00084DEE /* TokenDataParser.m */,
+				23EE830214BB81BB00084DEE /* Tokens.plist */,
+			);
+			name = TokenData;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1343,6 +1378,8 @@
 				232AB15A14B5252D0080B218 /* TemplateData.xml in Resources */,
 				23423A5514B90BEB00169B50 /* CoinImages128.plist in Resources */,
 				23423A5614B90BEB00169B50 /* CoinImages128.png in Resources */,
+				23EE82EE14BB491D00084DEE /* coin-drop-1.caf in Resources */,
+				23EE830314BB81BC00084DEE /* Tokens.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1515,9 +1552,10 @@
 				23795BEC14B6562F0065AE7D /* ccHashSet.m in Sources */,
 				23795C1B14B692580065AE7D /* StackSprite.m in Sources */,
 				23423A4414B8CE2B00169B50 /* TokenSprite.m in Sources */,
-				23423A4814B8D28E00169B50 /* TokenData.m in Sources */,
-				23423A4F14B9053800169B50 /* WorkspaceData.m in Sources */,
-				23423A5214B9055400169B50 /* WorkspaceSprite.m in Sources */,
+				23423A4814B8D28E00169B50 /* TokenData.mm in Sources */,
+				23EE82FA14BB605500084DEE /* LevelData.m in Sources */,
+				23EE82FD14BB606F00084DEE /* LevelDataParser.m in Sources */,
+				23EE830114BB7CDB00084DEE /* TokenDataParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,7 @@
 @synthesize itemType;
 @synthesize itemState;
 @synthesize name;
+@synthesize vertices;
 
 -(id)init{
     

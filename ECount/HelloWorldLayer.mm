@@ -23,7 +23,7 @@
 #define kSpriteSpawnLevel 2
 #define kSpriteActiveLevel 3
 
-#define kSpaceDamping 0.0f
+#define kSpaceDamping 0.5f
 #define kWorkspaceDamping 2.0f
 
 //Touches
@@ -95,12 +95,38 @@ typedef enum {
     spriteBodyDef.userData = sprite;
     b2Body *spriteBody = _world->CreateBody(&spriteBodyDef);
     
-    b2PolygonShape spriteShape;
+    spriteBody->SetLinearDamping(kSpaceDamping); 
+    spriteBody->SetAngularDamping(kSpaceDamping);
+    
+    //b2PolygonShape spriteShape;
+    b2CircleShape spriteShape;
+
+    if(sprite.itemType == 4){
+       
+        spriteShape.m_radius =  50.3 / PTM_RATIO;
+        
+    }else if (sprite.itemType == 5){
+
+    }    
+    else if (sprite.itemType == 3){
+        spriteShape.m_radius =  49.05 / PTM_RATIO;
+    }
+    
+    else if (sprite.itemType == 2) {
+        spriteShape.m_radius =  45.45/ PTM_RATIO;
+
+
+    } else {
+        spriteShape.m_radius =  63.3 / PTM_RATIO;
+ 
+    }
+
     /*spriteShape.SetAsBox(sprite.contentSize.width/PTM_RATIO/2,
      sprite.contentSize.height/PTM_RATIO/2);
      */
+    /*
     if(sprite.itemType == 4){
-        /*int num = 8;
+        int num = 8;
         b2Vec2 verts[] = {
             b2Vec2(-3.5f / PTM_RATIO, 51.7f / PTM_RATIO),
             b2Vec2(-41.7f / PTM_RATIO, 30.5f / PTM_RATIO),
@@ -110,11 +136,13 @@ typedef enum {
             b2Vec2(30.2f / PTM_RATIO, -39.2f / PTM_RATIO),
             b2Vec2(47.7f / PTM_RATIO, 5.5f / PTM_RATIO),
             b2Vec2(23.0f / PTM_RATIO, 43.7f / PTM_RATIO)
+            
         };
-        */
-        NSMutableArray* array = [self getb2Vec2:sprite];
-        b2Vec2 * vl = (b2Vec2*)[[array objectAtIndex:0] bytes];
-        spriteShape.Set(vl, [[array objectAtIndex:1] intValue] );
+        
+        //NSMutableArray* array = [self getb2Vec2:sprite];
+        //b2Vec2 * vl = (b2Vec2*)[[array objectAtIndex:0] bytes];
+        //spriteShape.Set(vl, [[array objectAtIndex:1] intValue] );
+        spriteShape.Set(verts, num);
         
     }else if (sprite.itemType == 5){
         int num = 8;
@@ -175,13 +203,20 @@ typedef enum {
         };
         spriteShape.Set(verts, num);
     }
+     */
+/*
+    NSArray* array = sprite.vertices;
+    b2Vec2* vl = (b2Vec2*) [[array objectAtIndex:0] bytes];
 
-     
+    spriteShape.Set(vl, [[array objectAtIndex:1] intValue]);
+*/
+    
     b2FixtureDef spriteShapeDef;
     spriteShapeDef.shape = &spriteShape;
     spriteShapeDef.density = 10.0;
-   
+ 
     spriteShapeDef.isSensor = true;
+    
 
     spriteBody->CreateFixture(&spriteShapeDef);
     
@@ -231,6 +266,7 @@ typedef enum {
     
     TokenSprite *sprite = [TokenSprite spriteWithSpriteFrameName:token.imageName];
     sprite.name = token.name;
+    //sprite.vertices = token.vertices;
     sprite.position = token.itemPosition;
     sprite.itemType = token.itemType;
     sprite.itemValue = token.itemValue;
@@ -302,16 +338,31 @@ typedef enum {
         //stackPosition = CGPointMake(555, 555);
         //Item Types should derive for dictionary of gameobjects (same as image) name, but enumerated
         tokenDictionary = [[NSMutableDictionary alloc] init];
+  
+        TokenData* tokenData = [[TokenData alloc] initWithName:@"quarter" imageSize:128 itemPosition:CGPointMake(200, 650)];
+        TokenData* tokenData1 = [[TokenData alloc] initWithName:@"dime" imageSize:128 itemPosition:CGPointMake(200, 500)];
+        TokenData* tokenData2 = [[TokenData alloc] initWithName:@"penny" imageSize:128 itemPosition:CGPointMake(200, 200)];
+        TokenData* tokenData3 = [[TokenData alloc] initWithName:@"nickel" imageSize:128 itemPosition:CGPointMake(200, 350)];
         
-        TokenData* tokenData = [[TokenData alloc] init];
-        tokenData.name = @"quarter";
-        tokenData.imageName = @"quarter.png";
-        tokenData.itemPosition = CGPointMake(200, 650);
-        tokenData.itemType = 1;
-        tokenData.itemValue = 1;
+        
+        
+        [self spawnSpriteFromToken:tokenData state:kSpawnStack];
+        [self spawnSpriteFromToken:tokenData1 state:kSpawnStack];
+        [self spawnSpriteFromToken:tokenData2 state:kSpawnStack];
+        [self spawnSpriteFromToken:tokenData3 state:kSpawnStack];
 
+       
+        [self spawnSpriteFromToken:tokenData state:kSpawend];
+        [self spawnSpriteFromToken:tokenData1 state:kSpawend];
+        [self spawnSpriteFromToken:tokenData2 state:kSpawend];
+        [self spawnSpriteFromToken:tokenData3 state:kSpawend];
+        
+        
         [tokenDictionary setObject:tokenData forKey:tokenData.name];
-
+        [tokenDictionary setObject:tokenData1 forKey:tokenData1.name];
+        [tokenDictionary setObject:tokenData2 forKey:tokenData2.name];
+        [tokenDictionary setObject:tokenData3 forKey:tokenData3.name];
+/*
         TokenData* tokenData1 = [[TokenData alloc] init];
         tokenData1.name = @"dime";
         tokenData1.imageName = @"dime.png";
@@ -382,7 +433,7 @@ typedef enum {
         [self spawnSpriteFromToken:tokenData1 state:kSpawend];
         [self spawnSpriteFromToken:tokenData2 state:kSpawend];
         [self spawnSpriteFromToken:tokenData3 state:kSpawend];
-        
+        */
 
         // Preload effect
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"coin-drop-1.caf"];

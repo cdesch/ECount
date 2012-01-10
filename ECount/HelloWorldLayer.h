@@ -36,7 +36,6 @@
 // returns a CCScene that contains the HelloWorldLayer as the only child
 +(CCScene *) scene;
 // adds a new sprite at a given coordinate
-- (void)spawnSprite:(NSString*)imageName tag:(NSInteger)tag;
 
 - (void)addNewSpriteWithCoords:(CGPoint)p;
 - (bool)detectCollision:(CCNode *)obj with:(CCNode*)object2;

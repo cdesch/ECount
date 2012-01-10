@@ -7,20 +7,33 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Box2D.h"
+#import "GLES-Render.h"
 
 @interface TokenData : NSObject   {
     
-    float       itemValue;
-    int         itemType;
-    NSString*   imageName;
-    NSString*   name;
-    CGPoint     itemPosition;
+    NSString*   _name;
+    NSString*   _imageName;
+    CGPoint     _itemPosition;
+    float       _itemValue;
+    int         _itemType;
+    int         _imageSize;
+    NSArray*    _vertices;
+    
 }
 
+@property(nonatomic, retain) NSString*      name;
+@property(nonatomic, retain) NSString*      imageName;
+@property(nonatomic, readwrite) CGPoint     itemPosition;
 @property(nonatomic, readwrite) float       itemValue;
 @property(nonatomic, readwrite) int         itemType;
-@property(nonatomic, retain) NSString*      imageName;
-@property(nonatomic, retain) NSString*      name;
-@property(nonatomic, readwrite) CGPoint     itemPosition;
+@property(nonatomic, readwrite) int         imageSize;
+@property(nonatomic, retain) NSArray*       vertices;
+
+- (id)initWithName:(NSString *)name 
+         imageSize:(int)imageSize
+      itemPosition:(CGPoint)itemPosition;
+
+
 
 @end

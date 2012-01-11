@@ -23,8 +23,8 @@
 
 - (void)addBackButton {
     
-    NSString *normal = [NSString stringWithFormat:@"Arrow-Normal-%@.png", self.device];
-    NSString *selected = [NSString stringWithFormat:@"Arrow-Selected-%@.png", self.device];        
+    NSString *normal = [NSString stringWithFormat:@"60-x-%@.png", self.device];
+    NSString *selected = [NSString stringWithFormat:@"60-x-%@.png", self.device];                    
     CCMenuItemImage *goBack = [CCMenuItemImage itemFromNormalImage:normal 
                                                      selectedImage:selected
                                                             target:self 

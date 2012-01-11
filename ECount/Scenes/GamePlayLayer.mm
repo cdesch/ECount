@@ -55,18 +55,18 @@
     
     // create the quit button
     CCMenuItemSprite *item1 =
-    [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"QuitButton.png"]
+    [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:[NSString stringWithFormat:@"54-stop%@.png", self.device]]
                             selectedSprite:nil
                                     target:self selector:@selector(quitButtonWasPressed:)];
     // create the restart button
     CCMenuItemSprite *item2 =
-    [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"RestartButton.png"]
+    [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:[NSString stringWithFormat:@"02-redo%@.png", self.device]]
                             selectedSprite:nil
                                     target:self
                                   selector:@selector(restartButtonWasPressed:)];
     // create the resume button
     CCMenuItemSprite *item3 =
-    [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"ResumeButton.png"]
+    [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:[NSString stringWithFormat:@"49-play%@.png", self.device]]
                             selectedSprite:nil
                                     target:self
                                   selector:@selector(resumeButtonWasPressed:)];
@@ -92,7 +92,7 @@
 - (void)createPauseButton {
     
     // create sprite for the pause button
-    pauseButton = [CCSprite spriteWithFile:@"PauseButton.png"];
+    pauseButton = [CCSprite spriteWithFile:[NSString stringWithFormat:@"48-pause-%@.png", self.device]];
     
     // create menu item for the pause button from the pause sprite
     CCMenuItemSprite *item = [CCMenuItemSprite itemFromNormalSprite:pauseButton

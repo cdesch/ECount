@@ -16,6 +16,7 @@
 @synthesize itemState;
 @synthesize name;
 @synthesize vertices;
+@synthesize radius;
 
 -(id)init{
     

@@ -19,6 +19,7 @@
 @synthesize itemType = _itemType;
 @synthesize imageSize = _imageSize;
 @synthesize vertices = _vertices;
+@synthesize radius = _radius;
 
 - (id)initWithName:(NSString *)name 
          imageSize:(int)imageSize
@@ -40,6 +41,11 @@
         //Assign the values from the object dictionary
         self.itemType  = [[objectDict objectForKey:@"itemType"] intValue];
         self.itemValue = [[objectDict objectForKey:@"itemValue"] floatValue];
+        
+        if ([objectDict objectForKey:@"radius"] != nil){
+            self.radius = [[objectDict objectForKey:@"radius"] floatValue];    
+        }
+        
         
         
         /*

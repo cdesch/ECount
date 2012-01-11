@@ -8,6 +8,8 @@
 		<real>0.25</real>
 		<key>itemType</key>
 		<integer>1</integer>
+		<key>radius</key>
+		<real>63.3</real>
 		<key>128</key>
 		<array>
 			<dict>
@@ -141,6 +143,8 @@
 		<real>0.05</real>
 		<key>itemType</key>
 		<integer>4</integer>
+		<key>radius</key>
+		<real>50.3</real>
 		<key>128</key>
 		<array>
 			<dict>
@@ -235,6 +239,8 @@
 		<real>0.1</real>
 		<key>itemType</key>
 		<integer>2</integer>
+		<key>radius</key>
+		<string>45.45</string>
 		<key>128</key>
 		<array>
 			<dict>
@@ -329,6 +335,104 @@
 		<real>0.01</real>
 		<key>itemType</key>
 		<integer>3</integer>
+		<key>radius</key>
+		<real>49.05</real>
+		<key>128</key>
+		<array>
+			<dict>
+				<key>x</key>
+				<real>-3.2</real>
+				<key>y</key>
+				<real>63.3</real>
+			</dict>
+			<dict>
+				<key>x</key>
+				<real>-46.7</real>
+				<key>y</key>
+				<real>43.1</real>
+			</dict>
+			<dict>
+				<key>x</key>
+				<real>-59.8</real>
+				<key>y</key>
+				<real>18.7</real>
+			</dict>
+			<dict>
+				<key>x</key>
+				<real>-60.5</real>
+				<key>y</key>
+				<real>-15.6</real>
+			</dict>
+			<dict>
+				<key>x</key>
+				<real>-46.7</real>
+				<key>y</key>
+				<real>-40.3</real>
+			</dict>
+			<dict>
+				<key>x</key>
+				<real>-23.7</real>
+				<key>y</key>
+				<real>-56.9</real>
+			</dict>
+			<dict>
+				<key>x</key>
+				<real>2.8</real>
+				<key>y</key>
+				<real>-61.2</real>
+			</dict>
+			<dict>
+				<key>x</key>
+				<real>23</real>
+				<key>y</key>
+				<real>-56.2</real>
+			</dict>
+			<dict>
+				<key>x</key>
+				<real>38.9</real>
+				<key>y</key>
+				<real>-45.6</real>
+			</dict>
+			<dict>
+				<key>x</key>
+				<real>54.1</real>
+				<key>y</key>
+				<real>-24.4</real>
+			</dict>
+			<dict>
+				<key>x</key>
+				<real>60.1</real>
+				<key>y</key>
+				<real>0.4</real>
+			</dict>
+			<dict>
+				<key>x</key>
+				<real>54.4</real>
+				<key>y</key>
+				<real>27.9</real>
+			</dict>
+			<dict>
+				<key>x</key>
+				<real>33.2</real>
+				<key>y</key>
+				<real>50.2</real>
+			</dict>
+			<dict>
+				<key>x</key>
+				<real>12</real>
+				<key>y</key>
+				<real>59.4</real>
+			</dict>
+		</array>
+	</dict>
+	<key>TrayTop</key>
+	<dict>
+		<key>itemValue</key>
+		<integer>0</integer>
+		<key>itemType</key>
+		<integer>5</integer>
+		<key>radius</key>
+		<integer>0</integer>
 		<key>128</key>
 		<array>
 			<dict>

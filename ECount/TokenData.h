@@ -19,6 +19,7 @@
     int         _itemType;
     int         _imageSize;
     NSArray*    _vertices;
+    float       _radius;
     
 }
 
@@ -29,6 +30,7 @@
 @property(nonatomic, readwrite) int         itemType;
 @property(nonatomic, readwrite) int         imageSize;
 @property(nonatomic, retain) NSArray*       vertices;
+@property(nonatomic, readwrite) float       radius;
 
 - (id)initWithName:(NSString *)name 
          imageSize:(int)imageSize

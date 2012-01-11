@@ -16,13 +16,15 @@
     int         itemState;
     NSString*   name;
     NSArray*    vertices;
+    float       radius;
 }
 
 @property(nonatomic, readwrite) float       itemValue;
 @property(nonatomic, readwrite) int         itemType;
 @property(nonatomic, readwrite) int         itemState;
 @property(nonatomic, retain)    NSString*   name;
-@property(nonatomic, retain) NSArray*       vertices;
+@property(nonatomic, retain)    NSArray*    vertices;
+@property(nonatomic, readwrite) float       radius;
 
 - (bool)collidesWith:(CCNode *)obj;
 

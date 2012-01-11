@@ -87,7 +87,7 @@
                 label.position = ccp( screenSize.width/2, screenSize.height/2);  
                 
                 // Add label to this scene
-                [self addChild:label z:0]; 
+                //[self addChild:label z:0]; 
             }
         }
 

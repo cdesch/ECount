@@ -22,6 +22,7 @@
 @synthesize radius = _radius;
 
 - (id)initWithName:(NSString *)name 
+         imageName:(NSString *)imageName
          imageSize:(int)imageSize
       itemPosition:(CGPoint)itemPosition{
     
@@ -31,7 +32,7 @@
         self.name = name;  
         self.imageSize = imageSize;
         self.itemPosition = itemPosition;
-        self.imageName = [NSString stringWithString:[name stringByAppendingString:@".png"]];
+        self.imageName = [NSString stringWithString:[imageName stringByAppendingString:@".png"]];
         
         //Get the Object properties from the token's plist
         NSString *path = [[NSBundle mainBundle] pathForResource:@"Tokens" ofType:@"plist"];

@@ -33,6 +33,7 @@
 @property(nonatomic, readwrite) float       radius;
 
 - (id)initWithName:(NSString *)name 
+         imageName:(NSString *)imageName
          imageSize:(int)imageSize
       itemPosition:(CGPoint)itemPosition;
 

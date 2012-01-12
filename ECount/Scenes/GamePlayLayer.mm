@@ -36,6 +36,12 @@ typedef enum {
 @implementation GamePlayLayer
 
 @synthesize iPad, device;
+@synthesize levelData;
+
+
++(id)nodeWithGameLevel:(int)level chapter:(int)chapter{
+    return  [[[self alloc] initWithGameLevel:level chapter:chapter] autorelease];
+}
 
 #pragma mark - Button Actions
 - (void)quitButtonWasPressed:(id)sender {
@@ -502,7 +508,7 @@ typedef enum {
                                         
                                         //Spawn New Sprite in place
                                         [self spawnSpriteFromToken:[tokenDictionary objectForKey:sprite.name] state:kSpawend];
-                                        NSLog(@"Spawned %@", sprite.name);
+                                        //NSLog(@"Spawned %@", sprite.name);
                                         //We are done for now. Return for the next Loop
                                         return;
                                         
@@ -524,7 +530,8 @@ typedef enum {
                                         
                     //NOTE: MAy have to put this on a different check interval that is less than 1 step
                     //Set HUD View 
-                    [total setString:formattedOutput];
+                    CCLabelTTF* totalLabel = [workspaceLabelDictionary objectForKey:sprite.name];
+                    [totalLabel setString:formattedOutput];
                     
                     //Check end game case
                     //NSLog(@"Workspace: %@  Value: %f", sprite.name, sprite.itemValue);
@@ -590,7 +597,7 @@ typedef enum {
                 // it that way, so cast it...
                 TokenSprite *sprite = (TokenSprite *) body->GetUserData();
                 
-                NSLog(@"Destroy %@", sprite.name);
+                //NSLog(@"Destroy %@", sprite.name);
                 
                 // Remove the sprite from the scene
                 [_spriteSheet removeChild:sprite cleanup:YES];
@@ -620,7 +627,8 @@ typedef enum {
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 }
 
-- (id)init
+//- (id)init
+- (id)initWithGameLevel:(int)level chapter:(int)chapter
 {
     self = [super init];
     if (self != nil) {
@@ -648,15 +656,7 @@ typedef enum {
         // Add label to this scene
         [self addChild:label z:0]; 
 
-        //Setup Labels for HUD
-        //[menu setPosition:ccp([CCDirector sharedDirector].winSize.width/2, [CCDirector sharedDirector].winSize.height-16)];
-        total = [CCLabelTTF labelWithString:@"$0.00" fontName:@"Marker Felt" fontSize:36];
-        [total setPosition:ccp(screenSize.width * 0.95, screenSize.height * 0.95)];
-        timer = [CCLabelTTF labelWithString:@"00:00" fontName:@"Marker Felt" fontSize:36];        
-        [timer setPosition:ccp(screenSize.width * 0.05, screenSize.height * 0.95)];    
-        
-        [self addChild:total z:50]; 
-        [self addChild:timer z:50];
+
         
         // ** put new code below ** //
         
@@ -664,107 +664,49 @@ typedef enum {
         [self setupPhysicsWorld];
         [self limitWorldToScreen];
         
+        // Preload sound effect
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"coin-drop-1.caf"];
-        
-        /* -- Set Up Shape Cache  -- */
-        //[[GB2ShapeCache sharedShapeCache]  addShapesWithFile:@"Sprites-Physics.plist"];
-        
-        /* -- Set Up Sprite Cache  -- */
-        //[[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"Sprites.plist"];
-        //CCSpriteBatchNode *sprites = [CCSpriteBatchNode batchNodeWithFile:@"Sprites.png"];
-        //[self addChild:sprites];
-        
-        /* -- Create Box2D Body with CCSprite userdata  -- */
-        //TRBox2D *newBody = [TRBox2D spriteWithSpriteFrameName:@"NinjaBaby.png"]; 
-        
-        //[newBody setPosition:ccp((screenSize.width/2), (screenSize.height/2))];
-        /*
-        [newBody createBodyInWorld:_world 
-                        b2bodyType:b2_dynamicBody 
-                             angle:0.0 
-                        allowSleep:true 
-                     fixedRotation:false 
-                            bullet:false];
-        */
-        /* -- Add fixtures to Physics Object -- */
-        //[[GB2ShapeCache sharedShapeCache] addFixturesToBody:newBody.body forShapeName:@"NinjaBaby"];
-       
-        /*  // to add a circle fixture instead, comment out the line above
-        b2CircleShape circle;
-        circle.m_radius = 1.0; // radius in meters 
-        [newBody addFixtureOfShape:&circle 
-                          friction:1.0 
-                       restitution:1.0 
-                           density:1.0 
-                          isSensor:false];
-        */
-        //[self addChild:newBody];
         
         // Create our sprite sheet and frame cache
         _spriteSheet = [[CCSpriteBatchNode batchNodeWithFile:@"CoinImages128.png" capacity:2] retain];
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"CoinImages128.plist"];
         [self addChild:_spriteSheet z:0 tag:0];
         
-        
-        /*
-        // Create b2 world
-        b2Vec2 gravity = b2Vec2(0.0f, 0.0f);
-        bool doSleep = false;
-        _world = new b2World(gravity, doSleep);
-        
-        // Enable debug draw
-        _debugDraw = new GLESDebugDraw( PTM_RATIO );
-        _world->SetDebugDraw(_debugDraw);
-        
-        uint32 flags = 0;
-        flags += b2DebugDraw::e_shapeBit;
-        _debugDraw->SetFlags(flags);
-        */
         // Create contact listener
         _contactListener = new MyContactListener();
         _world->SetContactListener(_contactListener);
         
-        // Preload effect
-        //[[SimpleAudioEngine sharedEngine] preloadEffect:@"hahaha.caf"];
-        /*
-        // Create edges around the entire screen
-        b2BodyDef groundBodyDef;
-        groundBodyDef.position.Set(0,0);
-        _groundBody = _world->CreateBody(&groundBodyDef);
-        b2PolygonShape groundBox;
-        b2FixtureDef groundBoxDef;
-        groundBoxDef.shape = &groundBox;
-        groundBox.SetAsEdge(b2Vec2(0,0), b2Vec2(screenSize.width/PTM_RATIO, 0));
-        _bottomFixture = _groundBody->CreateFixture(&groundBoxDef);
-        groundBox.SetAsEdge(b2Vec2(0,0), b2Vec2(0, screenSize.height/PTM_RATIO));
-        _groundBody->CreateFixture(&groundBoxDef);
-        groundBox.SetAsEdge(b2Vec2(0, screenSize.height/PTM_RATIO), b2Vec2(screenSize.width/PTM_RATIO, 
-                                                                           screenSize.height/PTM_RATIO));
-        _groundBody->CreateFixture(&groundBoxDef);
-        groundBox.SetAsEdge(b2Vec2(screenSize.width/PTM_RATIO, screenSize.height/PTM_RATIO), 
-                            b2Vec2(screenSize.width/PTM_RATIO, 0));
-        _groundBody->CreateFixture(&groundBoxDef);        
-        */
-        //Spawn Stacks
+        // Get Level Data
+        levelData = [[LevelData alloc] initWithName:[NSString stringWithFormat:@"%d", level] chapter:[NSString stringWithFormat:@"%d", chapter]];
         
-        //Item Types should derive for dictionary of gameobjects (same as image) name, but enumerated
-    
+        
+        //Spawn Stacks
         tokenDictionary = [[NSMutableDictionary alloc] init];
         workspaceDictionary = [[NSMutableDictionary alloc] init];
+
+        for (NSDictionary* tokenInit in levelData.tokens){
+            TokenData* tokenData = [[TokenData alloc] initWithName:[tokenInit objectForKey:@"name"] 
+                                                         imageName:[tokenInit objectForKey:@"imageName"]
+                                                         imageSize:128 
+                                                      itemPosition:CGPointMake([[tokenInit objectForKey:@"x"] intValue] , [[tokenInit objectForKey:@"y"] intValue] )];
+            [tokenDictionary setObject:tokenData forKey:tokenData.name];
+            [tokenData release];
+        }
+
         
-        TokenData* tokenData = [[TokenData alloc] initWithName:@"quarter" imageSize:128 itemPosition:CGPointMake(200, 650)];
-        TokenData* tokenData1 = [[TokenData alloc] initWithName:@"dime" imageSize:128 itemPosition:CGPointMake(200, 500)];
-        TokenData* tokenData2 = [[TokenData alloc] initWithName:@"penny" imageSize:128 itemPosition:CGPointMake(200, 200)];
-        TokenData* tokenData3 = [[TokenData alloc] initWithName:@"nickel" imageSize:128 itemPosition:CGPointMake(200, 350)];
+        for (NSDictionary* workspaceInit in levelData.workspaces){
+            TokenData* workspaceData = [[TokenData alloc] initWithName:[workspaceInit objectForKey:@"name"] 
+                                                             imageName:[workspaceInit objectForKey:@"imageName"] 
+                                                             imageSize:128 
+                                                          itemPosition:CGPointMake([[workspaceInit objectForKey:@"x"] intValue] , [[workspaceInit objectForKey:@"y"] intValue] )];
+            [workspaceDictionary setObject:workspaceData forKey:workspaceData.name];
+            [workspaceData release];
+        }
+
         
-        [tokenDictionary setObject:tokenData forKey:tokenData.name];
-        [tokenDictionary setObject:tokenData1 forKey:tokenData1.name];
-        [tokenDictionary setObject:tokenData2 forKey:tokenData2.name];
-        [tokenDictionary setObject:tokenData3 forKey:tokenData3.name];
-        
-        TokenData* workspaceData = [[TokenData alloc] initWithName:@"TrayTop" imageSize:128 itemPosition:CGPointMake(600, 600)];
+        //TokenData* workspaceData = [[TokenData alloc] initWithName:@"TrayTop" imageSize:128 itemPosition:CGPointMake(600, 600)];
     
-        [workspaceDictionary setObject:workspaceData forKey:workspaceData.name];
+        //[workspaceDictionary setObject:workspaceData forKey:workspaceData.name];
 
         //Create the SpawnStacks
         for(id key in [tokenDictionary allKeys]){
@@ -785,32 +727,30 @@ typedef enum {
         }
         
         
-        /*
-        [self spawnSpriteFromToken:tokenData state:kSpawnStack];
-        [self spawnSpriteFromToken:tokenData1 state:kSpawnStack];
-        [self spawnSpriteFromToken:tokenData2 state:kSpawnStack];
-        [self spawnSpriteFromToken:tokenData3 state:kSpawnStack];
+        //Setup Labels for HUD
+        //Create a Label for each Workspace
+        workspaceLabelDictionary = [[NSMutableDictionary alloc] init];
+        
+        for(id key in [workspaceDictionary allKeys]){
+            TokenData* value = [workspaceDictionary objectForKey:key];
+            CCLabelTTF* total = [CCLabelTTF labelWithString:@"$0.00" fontName:@"Marker Felt" fontSize:36];
+            [total setPosition:value.itemPosition];
+            [self addChild:total z:50]; 
+            [workspaceLabelDictionary setObject:total forKey:value.name];
+        }
+        
+               
+        timer = [CCLabelTTF labelWithString:@"00:00" fontName:@"Marker Felt" fontSize:36];        
+        [timer setPosition:ccp(screenSize.width * 0.05, screenSize.height * 0.95)];    
         
         
-        [self spawnSpriteFromToken:tokenData state:kSpawend];
-        [self spawnSpriteFromToken:tokenData1 state:kSpawend];
-        [self spawnSpriteFromToken:tokenData2 state:kSpawend];
-        [self spawnSpriteFromToken:tokenData3 state:kSpawend];
-        */
-        
-
-
-        [tokenData release];
-        [tokenData1 release];
-        [tokenData2 release];
-        [tokenData3 release];
+        [self addChild:timer z:50];
 
         // schedule Box2D updates
         [self schedule: @selector(tick:)];
         
         [self createPauseButton];
         [self createPausedMenu];
-        // ** put new code above ** //                            
     }
     return self;
 }
@@ -921,6 +861,15 @@ typedef enum {
     }  
 }
 
+#pragma mark - Game Play Controls
+
+- (BOOL)checkEndGame{
+    
+
+    
+    return false;
+}
+
 
 - (void)dealloc {
     
@@ -931,6 +880,7 @@ typedef enum {
     delete _contactListener;
     [_spriteSheet release];
     [tokenDictionary release];
+    [workspaceDictionary release];
     
     [super dealloc];
 }

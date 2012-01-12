@@ -10,7 +10,6 @@
 #import "GameBackgroundLayer.h"
 #import "GamePlayLayer.h"
 
-
 @implementation GameScene  
 @synthesize iPad, device;
 
@@ -63,8 +62,9 @@
         [self addChild:gameBackgroundLayer z:-10];
         
         // Add the gameplay layer to this scene
-        GamePlayLayer *gamePlayLayer = [GamePlayLayer node];
-        [self addChild:gamePlayLayer z:-9];
+        //GamePlayLayer *gamePlayLayer = [GamePlayLayer node];
+        //GamePlayLayer *gamePlayLayer = [GamePlayLayer nodeWithGameLevel:selectedLevel chapter:selectedChapter];
+        //[self addChild:gamePlayLayer z:-9];
         
         // Calculate Large Font Size
         int largeFont = screenSize.height / kFontScaleLarge; 
@@ -73,6 +73,11 @@
         
         int selectedChapter = gameData.selectedChapter;
         int selectedLevel = gameData.selectedLevel;
+        
+        
+        // Add the gameplay layer to this scene
+        GamePlayLayer *gamePlayLayer = [GamePlayLayer nodeWithGameLevel:selectedLevel chapter:selectedChapter];
+        [self addChild:gamePlayLayer z:-9];
         
         NSMutableArray *levels = [LevelParser loadLevelsForChapter:selectedChapter];
         
@@ -90,6 +95,10 @@
                 //[self addChild:label z:0]; 
             }
         }
+        
+        //gamePlayLayer.levelData = [[LevelData alloc] initWithName:[NSString stringWithFormat:@"%d", selectedLevel] chapter:[NSString stringWithFormat:@"%d", selectedChapter]];
+        
+        //
 
         //  Put a 'back' button in the scene
         //[self addBackButton];   

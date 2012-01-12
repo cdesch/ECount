@@ -339,12 +339,13 @@ typedef enum {
         //Item Types should derive for dictionary of gameobjects (same as image) name, but enumerated
         tokenDictionary = [[NSMutableDictionary alloc] init];
   
+        /*
         TokenData* tokenData = [[TokenData alloc] initWithName:@"quarter" imageSize:128 itemPosition:CGPointMake(200, 650)];
         TokenData* tokenData1 = [[TokenData alloc] initWithName:@"dime" imageSize:128 itemPosition:CGPointMake(200, 500)];
         TokenData* tokenData2 = [[TokenData alloc] initWithName:@"penny" imageSize:128 itemPosition:CGPointMake(200, 200)];
         TokenData* tokenData3 = [[TokenData alloc] initWithName:@"nickel" imageSize:128 itemPosition:CGPointMake(200, 350)];
-        
-        
+        */
+        /*
         
         [self spawnSpriteFromToken:tokenData state:kSpawnStack];
         [self spawnSpriteFromToken:tokenData1 state:kSpawnStack];
@@ -362,6 +363,7 @@ typedef enum {
         [tokenDictionary setObject:tokenData1 forKey:tokenData1.name];
         [tokenDictionary setObject:tokenData2 forKey:tokenData2.name];
         [tokenDictionary setObject:tokenData3 forKey:tokenData3.name];
+         */
 /*
         TokenData* tokenData1 = [[TokenData alloc] init];
         tokenData1.name = @"dime";

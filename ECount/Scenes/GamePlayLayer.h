@@ -15,10 +15,11 @@
 #import "MyContactListener.h"
 #import "SimpleAudioEngine.h"
 
+#import "LevelData.h"
+
 @interface GamePlayLayer : CCLayer {
     
-    CCLabelTTF*     timer; 
-    CCLabelTTF*     total;
+    CCLabelTTF *timer; 
     
     CCSprite *pauseButton;
     CCSprite *pausedSprite;
@@ -35,14 +36,22 @@
     
     NSMutableDictionary* tokenDictionary; 
     NSMutableDictionary* workspaceDictionary;
+    NSMutableDictionary* workspaceLabelDictionary;
     
     //Options Menu Parameters
-    BOOL soundEffects;      //
+    BOOL soundEffects;      
+    
+    LevelData* levelData;
 }
 
 @property (nonatomic, assign) BOOL iPad;
 @property (nonatomic, assign) NSString *device;
+@property (nonatomic, retain) LevelData* levelData;
 
+//+(id)nodeWithGameLevel:(int)level chapter:(int)chapter;
++ (id)nodeWithGameLevel:(int)level chapter:(int)chapter;
+- (id)initWithGameLevel:(int)level chapter:(int)chapter;
+- (BOOL)checkEndGame;
 
 
 @end

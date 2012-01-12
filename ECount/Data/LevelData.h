@@ -8,6 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LevelData : NSObject
+@interface LevelData : NSObject {
+    NSString*   _name;
+    NSArray*    _tokens;
+    NSArray*    _workspaces;
+
+}
+
+@property(nonatomic, retain) NSString*      name;
+@property(nonatomic, retain) NSArray*       tokens;
+@property(nonatomic, retain) NSArray*       workspaces;
+
+- (id)initWithName:(NSString *)name chapter:(NSString*)chapter;
 
 @end

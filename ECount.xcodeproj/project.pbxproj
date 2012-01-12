@@ -44,6 +44,7 @@
 		23423A4814B8D28E00169B50 /* TokenData.mm in Sources */ = {isa = PBXBuildFile; fileRef = 23423A4714B8D28E00169B50 /* TokenData.mm */; };
 		23423A5514B90BEB00169B50 /* CoinImages128.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23423A5314B90BEB00169B50 /* CoinImages128.plist */; };
 		23423A5614B90BEB00169B50 /* CoinImages128.png in Resources */ = {isa = PBXBuildFile; fileRef = 23423A5414B90BEB00169B50 /* CoinImages128.png */; };
+		2343EB6A14BE369800021659 /* LevelsData-Chapter1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2343EB6914BE369800021659 /* LevelsData-Chapter1.plist */; };
 		2350F27914B4C491006812AE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2350F27814B4C491006812AE /* QuartzCore.framework */; };
 		2350F27B14B4C491006812AE /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2350F27A14B4C491006812AE /* OpenGLES.framework */; };
 		2350F27D14B4C491006812AE /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2350F27C14B4C491006812AE /* OpenAL.framework */; };
@@ -360,6 +361,7 @@
 		23423A4714B8D28E00169B50 /* TokenData.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = TokenData.mm; path = ../TokenData.mm; sourceTree = "<group>"; };
 		23423A5314B90BEB00169B50 /* CoinImages128.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CoinImages128.plist; sourceTree = "<group>"; };
 		23423A5414B90BEB00169B50 /* CoinImages128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CoinImages128.png; sourceTree = "<group>"; };
+		2343EB6914BE369800021659 /* LevelsData-Chapter1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "LevelsData-Chapter1.plist"; sourceTree = "<group>"; };
 		2350F27414B4C491006812AE /* ECount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ECount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2350F27814B4C491006812AE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2350F27A14B4C491006812AE /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1568,6 +1570,7 @@
 				23EE82F914BB605500084DEE /* LevelData.m */,
 				23EE82FB14BB606F00084DEE /* LevelDataParser.h */,
 				23EE82FC14BB606F00084DEE /* LevelDataParser.m */,
+				2343EB6914BE369800021659 /* LevelsData-Chapter1.plist */,
 			);
 			name = LevelData;
 			sourceTree = "<group>";
@@ -1744,6 +1747,7 @@
 				2365D09514BCF0A9003CF130 /* 60-x-iPhone.png in Resources */,
 				2365D09614BCF0A9003CF130 /* 298-circlex-iPad.png in Resources */,
 				2365D09714BCF0A9003CF130 /* 298-circlex-iPhone.png in Resources */,
+				2343EB6A14BE369800021659 /* LevelsData-Chapter1.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

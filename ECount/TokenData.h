@@ -21,6 +21,10 @@
     NSArray*    _vertices;
     float       _radius;
     
+    //Workspace Specific
+    BOOL        _objectiveCompleteFlag;
+    float       _objective; 
+    
 }
 
 @property(nonatomic, retain) NSString*      name;
@@ -32,6 +36,9 @@
 @property(nonatomic, retain) NSArray*       vertices;
 @property(nonatomic, readwrite) float       radius;
 
+//Workspace Specific
+@property(nonatomic, readwrite) BOOL        objectiveCompleteFlag;
+@property(nonatomic, readwrite) float       objective; 
 - (id)initWithName:(NSString *)name 
          imageName:(NSString *)imageName
          imageSize:(int)imageSize

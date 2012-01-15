@@ -66,6 +66,12 @@
 
         //  Put a 'back' button in the scene
         [self addBackButton];   
+        
+        //Set Sounds //TODO:
+        //Set Voice Over //TODO:
+        
+        //Set Advertisements - IN APP Purchase.  //TODO:
+        
 
     }
     return self;

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23081D5414C21E9B00CE86DE /* Loader.m in Sources */ = {isa = PBXBuildFile; fileRef = 23081D5314C21E9B00CE86DE /* Loader.m */; };
 		232AB12514B525140080B218 /* ChapterSelect.mm in Sources */ = {isa = PBXBuildFile; fileRef = 232AB11414B525140080B218 /* ChapterSelect.mm */; };
 		232AB12614B525140080B218 /* GameBackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 232AB11614B525140080B218 /* GameBackgroundLayer.m */; };
 		232AB12714B525140080B218 /* GamePlayLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 232AB11814B525140080B218 /* GamePlayLayer.mm */; };
@@ -219,6 +220,8 @@
 		2365D09514BCF0A9003CF130 /* 60-x-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 2365D07F14BCF0A9003CF130 /* 60-x-iPhone.png */; };
 		2365D09614BCF0A9003CF130 /* 298-circlex-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2365D08014BCF0A9003CF130 /* 298-circlex-iPad.png */; };
 		2365D09714BCF0A9003CF130 /* 298-circlex-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 2365D08114BCF0A9003CF130 /* 298-circlex-iPhone.png */; };
+		23671CE014BFD2490062D3DB /* WorkspaceData.m in Sources */ = {isa = PBXBuildFile; fileRef = 23671CDF14BFD2480062D3DB /* WorkspaceData.m */; };
+		23671CE314BFE6A40062D3DB /* WorkspaceSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 23671CE214BFE6A40062D3DB /* WorkspaceSprite.m */; };
 		23795BDA14B64DAB0065AE7D /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 23795BD914B64DAB0065AE7D /* MyContactListener.mm */; };
 		23795BDC14B64F660065AE7D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 23795BDB14B64F660065AE7D /* libz.dylib */; };
 		23795BEC14B6562F0065AE7D /* ccHashSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 23795BEB14B6562F0065AE7D /* ccHashSet.m */; };
@@ -296,6 +299,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		23081D4E14C21E5B00CE86DE /* Loadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Loadable.h; sourceTree = "<group>"; };
+		23081D5214C21E9B00CE86DE /* Loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Loader.h; sourceTree = "<group>"; };
+		23081D5314C21E9B00CE86DE /* Loader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Loader.m; sourceTree = "<group>"; };
+		23081D5514C21EC100CE86DE /* LoadableDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadableDelegate.h; sourceTree = "<group>"; };
 		232AB11314B525140080B218 /* ChapterSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChapterSelect.h; sourceTree = "<group>"; };
 		232AB11414B525140080B218 /* ChapterSelect.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ChapterSelect.mm; sourceTree = "<group>"; };
 		232AB11514B525140080B218 /* GameBackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBackgroundLayer.h; sourceTree = "<group>"; };
@@ -695,6 +702,10 @@
 		2365D07F14BCF0A9003CF130 /* 60-x-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "60-x-iPhone.png"; sourceTree = "<group>"; };
 		2365D08014BCF0A9003CF130 /* 298-circlex-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "298-circlex-iPad.png"; sourceTree = "<group>"; };
 		2365D08114BCF0A9003CF130 /* 298-circlex-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "298-circlex-iPhone.png"; sourceTree = "<group>"; };
+		23671CDE14BFD2480062D3DB /* WorkspaceData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkspaceData.h; sourceTree = "<group>"; };
+		23671CDF14BFD2480062D3DB /* WorkspaceData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkspaceData.m; sourceTree = "<group>"; };
+		23671CE114BFE6A40062D3DB /* WorkspaceSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkspaceSprite.h; sourceTree = "<group>"; };
+		23671CE214BFE6A40062D3DB /* WorkspaceSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkspaceSprite.m; sourceTree = "<group>"; };
 		23795BD814B64DAA0065AE7D /* MyContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyContactListener.h; sourceTree = "<group>"; };
 		23795BD914B64DAB0065AE7D /* MyContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyContactListener.mm; sourceTree = "<group>"; };
 		23795BDB14B64F660065AE7D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -798,6 +809,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23081D5814C21F2C00CE86DE /* SceneLoader */ = {
+			isa = PBXGroup;
+			children = (
+				23081D5214C21E9B00CE86DE /* Loader.h */,
+				23081D5314C21E9B00CE86DE /* Loader.m */,
+				23081D4E14C21E5B00CE86DE /* Loadable.h */,
+				23081D5514C21EC100CE86DE /* LoadableDelegate.h */,
+			);
+			name = SceneLoader;
+			sourceTree = "<group>";
+		};
 		232AB11214B525140080B218 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -969,6 +991,9 @@
 				23795C1A14B692520065AE7D /* StackSprite.m */,
 				23423A4214B8CE2A00169B50 /* TokenSprite.h */,
 				23423A4314B8CE2A00169B50 /* TokenSprite.m */,
+				23671CE114BFE6A40062D3DB /* WorkspaceSprite.h */,
+				23671CE214BFE6A40062D3DB /* WorkspaceSprite.m */,
+				23081D5814C21F2C00CE86DE /* SceneLoader */,
 				232AB12F14B5252D0080B218 /* Data */,
 				232AB11214B525140080B218 /* Scenes */,
 				2350F28914B4C491006812AE /* Resources */,
@@ -1580,6 +1605,8 @@
 			children = (
 				23423A4614B8D28E00169B50 /* TokenData.h */,
 				23423A4714B8D28E00169B50 /* TokenData.mm */,
+				23671CDE14BFD2480062D3DB /* WorkspaceData.h */,
+				23671CDF14BFD2480062D3DB /* WorkspaceData.m */,
 				23EE82FF14BB7CDB00084DEE /* TokenDataParser.h */,
 				23EE830014BB7CDB00084DEE /* TokenDataParser.m */,
 				23EE830214BB81BB00084DEE /* Tokens.plist */,
@@ -1924,6 +1951,9 @@
 				23EE82FA14BB605500084DEE /* LevelData.m in Sources */,
 				23EE82FD14BB606F00084DEE /* LevelDataParser.m in Sources */,
 				23EE830114BB7CDB00084DEE /* TokenDataParser.m in Sources */,
+				23671CE014BFD2490062D3DB /* WorkspaceData.m in Sources */,
+				23671CE314BFE6A40062D3DB /* WorkspaceSprite.m in Sources */,
+				23081D5414C21E9B00CE86DE /* Loader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

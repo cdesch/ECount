@@ -21,6 +21,10 @@
 @synthesize vertices = _vertices;
 @synthesize radius = _radius;
 
+
+@synthesize objectiveCompleteFlag = _objectiveCompleteFlag;
+@synthesize objective = _objective;
+
 - (id)initWithName:(NSString *)name 
          imageName:(NSString *)imageName
          imageSize:(int)imageSize
@@ -47,7 +51,7 @@
             self.radius = [[objectDict objectForKey:@"radius"] floatValue];    
         }
         
-        
+        self.objectiveCompleteFlag = false;
         
         /*
         //build the vertices list for collision detection based on what image size the image is

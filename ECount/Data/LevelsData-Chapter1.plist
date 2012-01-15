@@ -9,8 +9,6 @@
 			<dict>
 				<key>name</key>
 				<string>quarter</string>
-				<key>size</key>
-				<integer>128</integer>
 				<key>imageName</key>
 				<string>quarter</string>
 				<key>x</key>
@@ -21,8 +19,6 @@
 			<dict>
 				<key>name</key>
 				<string>dime</string>
-				<key>size</key>
-				<integer>128</integer>
 				<key>imageName</key>
 				<string>dime</string>
 				<key>x</key>
@@ -33,8 +29,6 @@
 			<dict>
 				<key>name</key>
 				<string>penny</string>
-				<key>size</key>
-				<integer>128</integer>
 				<key>imageName</key>
 				<string>penny</string>
 				<key>x</key>
@@ -45,8 +39,6 @@
 			<dict>
 				<key>name</key>
 				<string>nickel</string>
-				<key>size</key>
-				<integer>128</integer>
 				<key>imageName</key>
 				<string>nickel</string>
 				<key>x</key>
@@ -60,16 +52,18 @@
 			<dict>
 				<key>name</key>
 				<string>TrayTop</string>
-				<key>size</key>
-				<integer>128</integer>
 				<key>imageName</key>
 				<string>TrayTop</string>
+				<key>endGame</key>
+				<real>0.75</real>
 				<key>x</key>
 				<integer>500</integer>
 				<key>y</key>
 				<integer>600</integer>
 			</dict>
 		</array>
+		<key>gameType</key>
+		<string>cashier</string>
 	</dict>
 	<key>2</key>
 	<dict>

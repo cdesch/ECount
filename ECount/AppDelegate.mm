@@ -117,6 +117,8 @@
     //[[CCDirector sharedDirector] runWithScene: [TestLayer scene]];
     [SceneManager goMainMenu];
     
+    //Set NSUSER DefaultsDefaults
+    
     /*
      
      //TODO:API HOOKS
@@ -129,6 +131,8 @@
      
      
      */
+    
+    
 }
 
 

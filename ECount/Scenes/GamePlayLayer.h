@@ -42,6 +42,11 @@
     BOOL soundEffects;      
     
     LevelData* levelData;
+    
+    int gameType;
+    
+    NSMutableArray* objectiveFlags;
+    
 }
 
 @property (nonatomic, assign) BOOL iPad;

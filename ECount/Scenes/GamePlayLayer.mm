@@ -532,6 +532,17 @@ typedef enum {
                     //Set HUD View 
                     CCLabelTTF* totalLabel = [workspaceLabelDictionary objectForKey:sprite.name];
                     [totalLabel setString:formattedOutput];
+                    /*
+                    if(sprite.itemValue == Value){
+                        //Change Color
+                        
+                        //Set Objective Completed Condition FLAG TRUE
+                    }else{
+                        //Change Color
+                        
+                        //Set Objective Completed Condition FLAG TRUE
+                    }
+                      */  
                     
                     //Check end game case
                     //NSLog(@"Workspace: %@  Value: %f", sprite.name, sprite.itemValue);
@@ -703,10 +714,8 @@ typedef enum {
             [workspaceData release];
         }
 
-        
-        //TokenData* workspaceData = [[TokenData alloc] initWithName:@"TrayTop" imageSize:128 itemPosition:CGPointMake(600, 600)];
-    
-        //[workspaceDictionary setObject:workspaceData forKey:workspaceData.name];
+        //Set Game Type
+        gameType = 0;
 
         //Create the SpawnStacks
         for(id key in [tokenDictionary allKeys]){
@@ -742,7 +751,6 @@ typedef enum {
                
         timer = [CCLabelTTF labelWithString:@"00:00" fontName:@"Marker Felt" fontSize:36];        
         [timer setPosition:ccp(screenSize.width * 0.05, screenSize.height * 0.95)];    
-        
         
         [self addChild:timer z:50];
 
@@ -858,16 +866,55 @@ typedef enum {
                 }
             }
         }
-    }  
+    }
 }
 
 #pragma mark - Game Play Controls
 
 - (BOOL)checkEndGame{
     
+    //check the end game case 
+    int endGame = FALSE;
+    
+    switch (gameType) {
+        case 0:
+            //Check Cashier End Game condition is satisfied.
+            
+            break;
+        case 1:
+            //Cashier Lowest Coins Possible
+            
+            break;
+        case 2:
+            //Chasier - Scenario
+            
+            break;
+        case 3:
+            //Casino 
+            
+            break;
+        case 4:
+            //Casino Lowest
+            
+            break;
+        case 5:
+            //Casino Scenario
+            
+            break;
+        case 6:
+            //Banker // Banker Lowest // Banker Scenario
+            
+            break;
+            
+        default:
+            //Default
+            
+            break;
+            
+    }
 
     
-    return false;
+    return endGame;
 }
 
 

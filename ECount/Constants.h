@@ -12,6 +12,7 @@
  screenSize = [CCDirector sharedDirector].winSize
  fontsize = screenSize.height / kFontScaleLarge;)
 */
+
 #define kFontScaleHuge 6;
 #define kFontScaleLarge 9;
 #define kFontScaleMedium 10;

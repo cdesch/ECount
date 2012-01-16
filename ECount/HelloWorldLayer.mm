@@ -14,6 +14,18 @@
 #import "TokenData.h"
 #import "TokenSprite.h"
 
+
+#import "LoopingMenu.h"
+#import "CCScrollLayer.h"
+
+#import "SlidingMenuGrid.h"
+
+#import "DragSprite.h"
+
+
+#import "CCMenuDock.h"
+#import "CCMenuItemDock.h"
+
 //Pixel to metres ratio. Box2D uses metres as the unit for measurement.
 //This ratio defines how many pixels correspond to 1 Box2D "metre"
 //Box2D is optimized for objects of 1x1 metre therefore it makes sense
@@ -277,6 +289,26 @@ typedef enum {
     
 }
 
+- (void)onSelectChapter:(CCMenuItemImage *)sender { 
+    
+    
+    NSLog(@"CHAPTER FUCKING SELECTED");
+    //CCLOG(@"writing the selected stage to GameData.xml as %i", sender.tag);
+    /*
+    GameData *gameData = [GameDataParser loadData];
+    [gameData setSelectedChapter:sender.tag];
+    [GameDataParser saveData:gameData];    
+    [SceneManager goLevelSelect];
+     */
+}
+
+- (void ) LaunchLevel: (id) sender
+{
+	// Do Something
+    NSLog(@"Something");
+}
+
+
 
 // on "init" you need to initialize your instance
 -(id) init
@@ -337,7 +369,7 @@ typedef enum {
 
         //stackPosition = CGPointMake(555, 555);
         //Item Types should derive for dictionary of gameobjects (same as image) name, but enumerated
-        tokenDictionary = [[NSMutableDictionary alloc] init];
+        //tokenDictionary = [[NSMutableDictionary alloc] init];
   
         /*
         TokenData* tokenData = [[TokenData alloc] initWithName:@"quarter" imageSize:128 itemPosition:CGPointMake(200, 650)];
@@ -436,7 +468,76 @@ typedef enum {
         [self spawnSpriteFromToken:tokenData2 state:kSpawend];
         [self spawnSpriteFromToken:tokenData3 state:kSpawend];
         */
+        /*
+        NSMutableArray *layers = [NSMutableArray new];
+        
+        for(int i = 0; i < 10; i++){
+            CCLayer *layer = [[[CCLayer alloc] init] autorelease];         
+            
+            CCMenuItemImage *image = [CCMenuItemImage itemFromNormalImage:@"StickyNote-iPad.png" 
+                                                            selectedImage:@"StickyNote-iPad.png" 
+                                                                   target:self 
+                                                                 selector:@selector(onSelectChapter:)];
+            //image.tag = chapterNumber;
+            CCMenu *menu = [CCMenu menuWithItems: image, nil];
+            [menu alignItemsVertically];
+            [layer addChild: menu];
+            
+            //CCLayer *layer = // [self layerWithChapterName:chapter.name chapterNumber:chapter.number screenSize:screenSize];
+            [layers addObject:layer];
+            
+        }
+        // Set up the swipe-able layers
+        CCScrollLayer *scroller = [[CCScrollLayer alloc] initWithLayers:layers 
+                                                            widthOffset:230];
+        
+        
+        //GameData *gameData = [GameDataParser loadData];
+        [scroller selectPage:0];
 
+        [self addChild:scroller];
+         */
+        
+        /*
+   		id target = self;
+        int iMaxLevels = 45;
+        
+        NSMutableArray* allItems = [NSMutableArray arrayWithCapacity:51];
+		for (int i = 1; i <= iMaxLevels; ++i)
+		{
+			// create a menu item for each character
+			NSString* image = [NSString stringWithFormat:@"LevelButton"];
+			NSString* normalImage = [NSString stringWithFormat:@"%@.png", image];
+			NSString* selectedImage = [NSString stringWithFormat:@"%@.png", image];
+			
+			//CCSprite* normalSprite = [CCSprite spriteWithFile:normalImage];
+			//CCSprite* selectedSprite = [CCSprite spriteWithFile:selectedImage];
+			//CCMenuItemSprite* item =[CCMenuItemSprite itemFromNormalSprite:normalSprite selectedSprite:selectedSprite target:target selector:@selector(LaunchLevel:)];
+             
+            
+            DragSprite* normalSprite = [DragSprite spriteWithFile:normalImage];
+			DragSprite* selectedSprite = [DragSprite spriteWithFile:selectedImage];
+			CCMenuItemSprite* item =[CCMenuItemSprite itemFromNormalSprite:normalSprite selectedSprite:selectedSprite target:target selector:@selector(LaunchLevel:)];
+			[allItems addObject:item];
+		}
+		
+		SlidingMenuGrid* menuGrid = [SlidingMenuGrid menuWithArray:allItems cols:5 rows:1 position:CGPointMake(70.f, 280.f) padding:CGPointMake(90.f, 80.f) verticalPages:false];
+		[self addChild:menuGrid];
+        */
+        
+        CCMenuItemDock *item1 = [CCMenuItemDock itemFromNormalImage:@"Icon.png" selectedImage:@"Icon.png" disabledImage:@"Icon.png"];
+        CCMenuItemDock *item2 = [CCMenuItemDock itemFromNormalImage:@"Icon.png" selectedImage:@"Icon.png" disabledImage:@"Icon.png"];
+        CCMenuItemDock *item3 = [CCMenuItemDock itemFromNormalImage:@"Icon.png" selectedImage:@"Icon.png" disabledImage:@"Icon.png"];
+        CCMenuItemDock *item4 = [CCMenuItemDock itemFromNormalImage:@"Icon.png" selectedImage:@"Icon.png" disabledImage:@"Icon.png"];
+        CCMenuItemDock *item5 = [CCMenuItemDock itemFromNormalImage:@"Icon.png" selectedImage:@"Icon.png" disabledImage:@"Icon.png"];
+        CCMenuItemDock *item6 = [CCMenuItemDock itemFromNormalImage:@"Icon.png" selectedImage:@"Icon.png" disabledImage:@"Icon.png"];
+        CCMenuItemDock *item7 = [CCMenuItemDock itemFromNormalImage:@"Icon.png" selectedImage:@"Icon.png" disabledImage:@"Icon.png"];
+        
+        CCMenuDock *menu = [CCMenuDock menuWithItems:item1,item2,item3,item4,item5,item6,item7, nil];
+        
+        menu.position =  ccp(5, 5);
+        
+        [self addChild:menu];
         // Preload effect
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"coin-drop-1.caf"];
 
@@ -448,9 +549,8 @@ typedef enum {
 	return self;
 }
 
-
--(void) draw
-{
+- (void) draw{
+    
     // Default GL states: GL_TEXTURE_2D, GL_VERTEX_ARRAY, GL_COLOR_ARRAY, GL_TEXTURE_COORD_ARRAY
 	// Needed states:  GL_VERTEX_ARRAY, 
 	// Unneeded states: GL_TEXTURE_2D, GL_COLOR_ARRAY, GL_TEXTURE_COORD_ARRAY
@@ -548,7 +648,6 @@ typedef enum {
                 }
             }else if(sprite.itemState == kWorkspace){
                 //Set HUD View 
-                
                 
                 //Check end game case
                 //NSLog(@"Workspace: %@  Value: %f", sprite.name, sprite.itemValue);

@@ -17,7 +17,7 @@
     
 	if((self=[super init])){
 		
-		[[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+		[[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:50 swallowsTouches:YES];
         
         //[NSString stringWithFormat:@"%f",itemValue]
         itemValueLabel = [CCLabelTTF labelWithString:@"1" fontName:@"Helvetica" fontSize:24];

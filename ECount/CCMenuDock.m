@@ -41,6 +41,7 @@
 - (void)unmarkSelectedItemForActivating;
 - (NSInteger)getClosestDockIndex:(CGPoint)position;
 - (BoundaryState)boundaryCheck:(CGPoint)position;
+
 @end
 
 @implementation CCMenuDock
@@ -110,8 +111,7 @@
     
     
     //Add to field
-    
-    //
+
 }
 
 -(void) registerWithTouchDispatcher
@@ -239,6 +239,8 @@
             dockSelectedItem.position = [[positionsArray objectAtIndex:[itemsArray indexOfObject:dockSelectedItem]] point];
         }
     }
+    
+    //Check Collision with Slot
 }
 
 -(void) ccTouchCancelled:(UITouch *)touch withEvent:(UIEvent *)event
@@ -355,6 +357,8 @@
             break;
     }
 }
+
+
 
 - (void)markSelectedItemForActivating {
     dockSelectedItem.markedToActivate = YES;

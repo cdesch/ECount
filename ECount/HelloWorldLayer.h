@@ -13,7 +13,7 @@
 #import "MyContactListener.h"
 #import "TokenData.h"
 #import "SimpleAudioEngine.h"
-
+#import "CCMenuDock.h"
 // HelloWorldLayer
 @interface HelloWorldLayer : CCLayer
 {
@@ -30,6 +30,8 @@
     
     //Options Menu Parameters
     BOOL soundEffects;      //
+    
+    CCMenuDock *menu;
     
 }
 

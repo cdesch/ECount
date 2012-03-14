@@ -308,6 +308,16 @@ typedef enum {
     NSLog(@"Something");
 }
 
+//Add Node To Menu
+- (void)addNode:(id)sender{
+    
+    NSLog(@"addNode");
+     CCMenuItemDock *item4 = [CCMenuItemDock itemFromNormalImage:@"Icon.png" selectedImage:@"Icon.png" disabledImage:@"Icon.png"];
+    [menu addChild:item4];
+}
+
+//AddNode to screen
+
 
 
 // on "init" you need to initialize your instance
@@ -533,17 +543,33 @@ typedef enum {
         CCMenuItemDock *item6 = [CCMenuItemDock itemFromNormalImage:@"Icon.png" selectedImage:@"Icon.png" disabledImage:@"Icon.png"];
         CCMenuItemDock *item7 = [CCMenuItemDock itemFromNormalImage:@"Icon.png" selectedImage:@"Icon.png" disabledImage:@"Icon.png"];
         
-        CCMenuDock *menu = [CCMenuDock menuWithItems:item1,item2,item3,item4,item5,item6,item7, nil];
-        
+        //CCMenuDock *menu = [CCMenuDock menuWithItems:item1,item2,item3,item4,item5,item6,item7, nil];
+        menu = [CCMenuDock menuWithItems:item1,item2,item3,item4,item5,item6,item7, nil];
         menu.position =  ccp(5, 5);
         
         [self addChild:menu];
+        
+       
         // Preload effect
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"coin-drop-1.caf"];
 
         
         //[self schedule:@selector(secondUpdate:) interval:1.0];
         [self schedule:@selector(tick:)];
+        
+        CCMenuItem *menuItem1 = [CCMenuItemFont itemFromString:@"Add Sprite" target:self selector:@selector(addNode:)];
+
+        
+        CCMenu *menu1 = [CCMenu menuWithItems:menuItem1, nil];
+        [menu1 alignItemsVertically];
+        [self addChild:menu1];
+        
+        DragSprite* normalSprite = [DragSprite spriteWithFile:@"Icon.png"];
+        normalSprite.position = CGPointMake(500, 500);
+        [self addChild:normalSprite];
+        
+        
+        
         
 	}
 	return self;

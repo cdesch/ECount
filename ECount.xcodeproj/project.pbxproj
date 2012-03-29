@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02C11E161524F33C00B278C5 /* WorkspaceDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 02C11E141524F33C00B278C5 /* WorkspaceDataParser.m */; };
+		02C11E171524F33C00B278C5 /* Workspaces.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02C11E151524F33C00B278C5 /* Workspaces.plist */; };
 		23081D5414C21E9B00CE86DE /* Loader.m in Sources */ = {isa = PBXBuildFile; fileRef = 23081D5314C21E9B00CE86DE /* Loader.m */; };
 		232AB12514B525140080B218 /* ChapterSelect.mm in Sources */ = {isa = PBXBuildFile; fileRef = 232AB11414B525140080B218 /* ChapterSelect.mm */; };
 		232AB12614B525140080B218 /* GameBackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 232AB11614B525140080B218 /* GameBackgroundLayer.m */; };
@@ -305,6 +307,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02C11E131524F33C00B278C5 /* WorkspaceDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkspaceDataParser.h; path = "../../../../Desktop/dev/ios/cdesch-ECount-87a48990f8e1b899ce870aa6dc061a9f5fcf07b9/ECount/Data/WorkspaceDataParser.h"; sourceTree = "<group>"; };
+		02C11E141524F33C00B278C5 /* WorkspaceDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkspaceDataParser.m; path = "../../../../Desktop/dev/ios/cdesch-ECount-87a48990f8e1b899ce870aa6dc061a9f5fcf07b9/ECount/Data/WorkspaceDataParser.m"; sourceTree = "<group>"; };
+		02C11E151524F33C00B278C5 /* Workspaces.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Workspaces.plist; path = "../../../../Desktop/dev/ios/cdesch-ECount-87a48990f8e1b899ce870aa6dc061a9f5fcf07b9/ECount/Data/Workspaces.plist"; sourceTree = "<group>"; };
 		23081D4E14C21E5B00CE86DE /* Loadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Loadable.h; sourceTree = "<group>"; };
 		23081D5214C21E9B00CE86DE /* Loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Loader.h; sourceTree = "<group>"; };
 		23081D5314C21E9B00CE86DE /* Loader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Loader.m; sourceTree = "<group>"; };
@@ -1631,6 +1636,9 @@
 		23EE82FE14BB618000084DEE /* TokenData */ = {
 			isa = PBXGroup;
 			children = (
+				02C11E131524F33C00B278C5 /* WorkspaceDataParser.h */,
+				02C11E141524F33C00B278C5 /* WorkspaceDataParser.m */,
+				02C11E151524F33C00B278C5 /* Workspaces.plist */,
 				23423A4614B8D28E00169B50 /* TokenData.h */,
 				23423A4714B8D28E00169B50 /* TokenData.mm */,
 				23671CDE14BFD2480062D3DB /* WorkspaceData.h */,
@@ -1804,6 +1812,7 @@
 				2365D09714BCF0A9003CF130 /* 298-circlex-iPhone.png in Resources */,
 				2343EB6A14BE369800021659 /* LevelsData-Chapter1.plist in Resources */,
 				23D15F5F14C36A2400297A61 /* LevelButton.png in Resources */,
+				02C11E171524F33C00B278C5 /* Workspaces.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1988,6 +1997,7 @@
 				23D15F6214C36BB700297A61 /* SlidingMenu.m in Sources */,
 				23FA275914C4A78F00B97E38 /* CCMenuDock.m in Sources */,
 				23FA275D14C4A7DA00B97E38 /* CCMenuItemDock.m in Sources */,
+				02C11E161524F33C00B278C5 /* WorkspaceDataParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

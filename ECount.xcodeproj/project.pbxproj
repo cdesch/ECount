@@ -222,7 +222,7 @@
 		2365D09514BCF0A9003CF130 /* 60-x-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 2365D07F14BCF0A9003CF130 /* 60-x-iPhone.png */; };
 		2365D09614BCF0A9003CF130 /* 298-circlex-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2365D08014BCF0A9003CF130 /* 298-circlex-iPad.png */; };
 		2365D09714BCF0A9003CF130 /* 298-circlex-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 2365D08114BCF0A9003CF130 /* 298-circlex-iPhone.png */; };
-		23671CE014BFD2490062D3DB /* WorkspaceData.m in Sources */ = {isa = PBXBuildFile; fileRef = 23671CDF14BFD2480062D3DB /* WorkspaceData.m */; };
+		23671CE014BFD2490062D3DB /* WorkspaceData.mm in Sources */ = {isa = PBXBuildFile; fileRef = 23671CDF14BFD2480062D3DB /* WorkspaceData.mm */; };
 		23671CE314BFE6A40062D3DB /* WorkspaceSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 23671CE214BFE6A40062D3DB /* WorkspaceSprite.m */; };
 		2375341114C35972007B0FB7 /* LoopingMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2375341014C35972007B0FB7 /* LoopingMenu.m */; };
 		23795BDA14B64DAB0065AE7D /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 23795BD914B64DAB0065AE7D /* MyContactListener.mm */; };
@@ -714,7 +714,7 @@
 		2365D08014BCF0A9003CF130 /* 298-circlex-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "298-circlex-iPad.png"; sourceTree = "<group>"; };
 		2365D08114BCF0A9003CF130 /* 298-circlex-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "298-circlex-iPhone.png"; sourceTree = "<group>"; };
 		23671CDE14BFD2480062D3DB /* WorkspaceData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkspaceData.h; sourceTree = "<group>"; };
-		23671CDF14BFD2480062D3DB /* WorkspaceData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkspaceData.m; sourceTree = "<group>"; };
+		23671CDF14BFD2480062D3DB /* WorkspaceData.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = WorkspaceData.mm; sourceTree = "<group>"; };
 		23671CE114BFE6A40062D3DB /* WorkspaceSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkspaceSprite.h; sourceTree = "<group>"; };
 		23671CE214BFE6A40062D3DB /* WorkspaceSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkspaceSprite.m; sourceTree = "<group>"; };
 		2375340F14C35972007B0FB7 /* LoopingMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoopingMenu.h; sourceTree = "<group>"; };
@@ -1642,7 +1642,7 @@
 				23423A4614B8D28E00169B50 /* TokenData.h */,
 				23423A4714B8D28E00169B50 /* TokenData.mm */,
 				23671CDE14BFD2480062D3DB /* WorkspaceData.h */,
-				23671CDF14BFD2480062D3DB /* WorkspaceData.m */,
+				23671CDF14BFD2480062D3DB /* WorkspaceData.mm */,
 				23EE82FF14BB7CDB00084DEE /* TokenDataParser.h */,
 				23EE830014BB7CDB00084DEE /* TokenDataParser.m */,
 				23EE830214BB81BB00084DEE /* Tokens.plist */,
@@ -1989,7 +1989,7 @@
 				23EE82FA14BB605500084DEE /* LevelData.m in Sources */,
 				23EE82FD14BB606F00084DEE /* LevelDataParser.m in Sources */,
 				23EE830114BB7CDB00084DEE /* TokenDataParser.m in Sources */,
-				23671CE014BFD2490062D3DB /* WorkspaceData.m in Sources */,
+				23671CE014BFD2490062D3DB /* WorkspaceData.mm in Sources */,
 				23671CE314BFE6A40062D3DB /* WorkspaceSprite.m in Sources */,
 				23081D5414C21E9B00CE86DE /* Loader.m in Sources */,
 				2375341114C35972007B0FB7 /* LoopingMenu.m in Sources */,

@@ -18,7 +18,7 @@
     int         _wsImageSize; //Gives the area of the workspace's image representation
     NSArray*    _wsVertices; //should be able to figure these from itemPosition and           
                            //dimensions, right?
-    float       _wsDimensions[2]; //max two dimensions (widthxheight), can be only one dimension (radius)
+    float       (*_wsDimensions)[2]; //max two dimensions (widthxheight), can be only one dimension (radius)
 
     //Workspace Specific
     BOOL        _wsObjectiveCompleteFlag; //Set to True  when wsValueContained is equal to the target value, _wsObjective
@@ -31,7 +31,10 @@
 @property(nonatomic, readwrite) float       wsValueContained;
 @property(nonatomic, readwrite) int         wsImageSize;
 @property(nonatomic, retain) NSArray*       wsVertices;
-@property(nonatomic, readwrite) float       wsDimensions[2];
+@property(nonatomic, readwrite) float      (*wsDimensions)[2];
+
+//-(float*) _wsDimensions;
+//-(void) set_wsDimensions;
 
 //Workspace Specific
 @property(nonatomic, readwrite) BOOL        wsObjectiveCompleteFlag;

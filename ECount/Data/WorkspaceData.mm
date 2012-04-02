@@ -21,6 +21,14 @@
 @synthesize wsVertices = _wsVertices;
 @synthesize wsDimensions = _wsDimensions;
 
+/*
+-(float)_wsDimensions{
+    return *_wsDimensions[0];
+}
+-(void)set_wsDimensions:(float) newArray{
+    *_wsDimensions[0] = newArray;
+}
+*/
 
 @synthesize wsObjectiveCompleteFlag = _wsObjectiveCompleteFlag;
 @synthesize wsObjective = _wsObjective;

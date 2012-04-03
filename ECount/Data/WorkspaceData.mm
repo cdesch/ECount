@@ -57,13 +57,13 @@
         
         //Could pare down the comparisons here by querying the shape property...
         if ([objectDict objectForKey:@"radius"] != nil){
-            self.wsDimensions[0] = [[objectDict objectForKey:@"radius"] floatValue];    
+            (*self.wsDimensions)[0] = [[objectDict objectForKey:@"radius"] floatValue];    
         }
         if ([objectDict objectForKey:@"height"] != nil){
-            self.wsDimensions[0] = [[objectDict objectForKey:@"height"] floatValue];    
+            (*self.wsDimensions)[0] = [[objectDict objectForKey:@"height"] floatValue];    
         }
         if ([objectDict objectForKey:@"width"] != nil){
-            self.wsDimensions[0] = [[objectDict objectForKey:@"width"] floatValue];    
+            (*self.wsDimensions)[0] = [[objectDict objectForKey:@"width"] floatValue];    
         }
         
         self.wsObjectiveCompleteFlag = false;
